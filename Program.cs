@@ -13,7 +13,7 @@ builder.Services.AddSingleton<MongoDBServices>();
 
 
 var app = builder.Build();
-
+//nuild
 app.UseSwagger();
 app.UseSwaggerUI();
 
