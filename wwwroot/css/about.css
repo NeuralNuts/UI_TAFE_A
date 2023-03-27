@@ -1,0 +1,95 @@
+﻿body {
+    background-image: none;
+}
+
+.hero-page {
+    display: none;
+}
+
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.parent-about-div {
+    position: absolute; 
+    display: inline-grid;
+    background-color: #0b0b0bdf;
+    border-radius: 10px;
+    border: solid;
+    border-color: #ffffff30;
+    margin-top: 6%;
+    width: 98.9%;
+}
+
+.child-about-div {
+    text-align: left;
+    width: 30%;
+    height: 30%;
+}
+
+.child-what-div {
+    position: absolute;
+    padding-left: 69.8%;
+    text-align: right;
+    width: 29%;
+    height: 10%;
+}
+
+.child-why-div {
+    position: absolute;
+    padding-left: 35%;
+    text-align: right;
+    width: 29%;
+    height: 10%;
+}
+
+.child-awards-div {
+    padding-top: 50px;
+}
+
+h1 {
+    color: #ffffffc4;
+    font-family: Arial;
+    text-align: center;
+    font-size: 70px;
+}
+
+h2 {
+    color: #ffffffc4;
+    font-family: Arial;
+    text-align: center;
+    font-size: 40px;
+}
+
+p {
+    color: #ffffffc4;
+    font-family: Arial;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+hr {
+    margin-top: -20px;
+    width: 50%;
+}
+
+.awards-hr {
+    margin-top: -40px;
+    width: 20%;
+    margin-bottom: 60px;
+}
+
+.award-img {
+    padding-left: 74px;
+    width: 20%;
+    background-color: transparent;
+}

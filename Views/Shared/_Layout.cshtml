@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/site.css" />
+</head>
+
+<body>
+    <header>
+        <div class="logo-div">
+            <img onclick="window.location.href =
+                        '@Url.Action("Index", "Home")'" 
+                 src="~/images/Sams Warehouse Shopping Cart.svg" />
+        </div> 
+
+        <ul class="nav-bar">
+            <li>
+                <button onclick=
+                        "window.location.href = 
+                        '@Url.Action("Index", "Home")'">Home
+                </button>
+            </li>
+
+            <li>
+                <button onclick=
+                        "window.location.href = 
+                        '@Url.Action("AboutPage", "Home")'">About
+                </button>
+            </li>
+
+            <li>
+                <button onclick="window.location.href =
+                        '@Url.Action("ProductPage", "Home")'">
+                    Products
+                </button>
+            </li>
+
+            <li>
+                <button onclick=
+                        "window.location.href = 
+                        '@Url.Action("PyramidChain", "Home")'">Solar-Sam
+                </button>
+            </li>
+
+            <li>
+                <button onclick=
+                        "window.location.href = 
+                        '@Url.Action("CartPage", "Home")'">Cart
+                </button>
+            </li>
+
+            <li>
+                <button>Settings
+
+                </button>
+            </li>
+        </ul>
+    </header>
+
+    <div class="hero-page">
+        <h2 class="hero-text">Sams warehouse</h2>
+        <hr />
+        <button class="hero-button" onclick="window.location.href =
+                        '@Url.Action("ProductPage", "Home")'">Shop now
+        </button>
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+@RenderBody()

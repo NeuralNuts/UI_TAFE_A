@@ -1,0 +1,80 @@
+﻿body {
+}
+
+.hero-page {
+    display: none;
+}
+
+.parent-product-div {
+    position: absolute;
+    display: inline-grid;
+    background-color: #0b0b0bdf;
+    border-radius: 10px;
+    border: solid;
+    border-color: #ffffff30;
+    margin-top: 6%;
+    width: 98.9%;
+}
+
+.products-div {
+    display: inline-flex;
+
+}
+
+h2 {
+    color: #ffffffc4;
+    font-family: Arial;
+    text-align: center;
+    font-size: 30px;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.add-button {
+    background-color: #008bd1;
+    width: 300px;
+    height: 30px;
+    margin-top: 70px;
+    margin-left: 13.1%;
+    border: solid;
+    border-color: #3ebeff71;
+    color: #ffffffcf;
+    border-width: 2px;
+    border-radius: 0px 0px 5px 0px;
+}
+
+.add-button:hover {
+    font-style: normal;
+    box-shadow: none;
+    border: solid;
+    color: white;
+    background-color: #00aaff;
+    border-color: #3ebeff;
+    border-width: 2px;
+}
+
+input {
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    font-family: Arial;
+    border: none;
+    margin-top: 26px;
+    height: 30px;
+    width: 140px;
+    margin-right: 20px;
+}
+
+textarea {
+    margin-right: 25px;
+    color: white;
+    font-size: 20px;
+    font-family: Arial;
+    margin-top: 30px;
+    height: 60px;
+    width: 500px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: none;
+    resize: none;
+}

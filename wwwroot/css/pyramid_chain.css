@@ -1,0 +1,394 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes anti-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes anti-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.hero-page {
+    display: none;
+}
+
+.hero-text {
+    display: none;
+}
+
+hr {
+    display: none;
+}
+
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+body {
+    background-image: none;
+    background-color: #090909ff;
+    background-size: 400px;
+    animation-name: none;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+header {
+    display: none;
+}
+
+.Pyramid-frame {
+    background-image: url(../images/star-sky-video-background.jpg);
+    background-size: 400px;
+    display: block;
+    transition: 0s;
+    border-radius: 10px;
+    border: solid;
+    border-color: white;
+    width: 100%;
+    background-color: #000000ff;
+}
+
+.sam-sun {
+    position: absolute;
+    background-color: #000000;
+    background-image: url("../images/sampic.png");
+    background-position-x: -15px;
+    background-size: 90px;
+    border: solid;
+    border-width: 1px;
+    border-color: #ffc05dff;
+    width: 60px;
+    height: 60px;
+    margin-left: 46%;
+    box-shadow: 0px 0px 30px 0px #fdc46bff;
+    margin-top: 20%;
+
+    transition: 3s;
+    border-radius: 100px;
+    animation-name: spin;
+    animation-duration: 22000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.sam-sun:hover > div:nth-child(1n+1) {
+    animation-name: none;
+    cursor: pointer;
+}
+
+.sam-sun-anti {
+    background-color: transparent;
+    border: solid;
+    border-width: 3px;
+    border-color: transparent;
+    width: 60px;
+    height: 60px;
+    transition: 3s;
+    border-radius: 100px;
+    animation-name: anti-spin;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.sam-sun-anti-2 {
+    background-color: transparent;
+    border: solid;
+    border-width: 3px;
+    border-color: transparent;
+    width: 60px;
+    height: 60px;
+    margin-top: -67.5px;
+    transition: 2s;
+    border-radius: 100px;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.sam-sun-anti-3 {
+    background-color: transparent;
+    border: solid;
+    border-width: 3px;
+    border-color: transparent;
+    width: 60px;
+    height: 60px;
+    transition: 2s;
+    border-radius: 100px;
+    animation-name: anti-spin;
+    margin-top: -69.5px;
+    animation-duration: 7000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.sam-sun-anti-4{
+    background-color: transparent;
+    border: solid;
+    border-width: 3px;
+    border-color: transparent;
+    width: 60px;
+    height: 60px;
+    transition: 2s;
+    border-radius: 100px;
+    animation-name: spin;
+    margin-top: -64.5px;
+    animation-duration: 28000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.sam-sun-anti-5 {
+    background-color: transparent;
+    border: solid;
+    border-width: 3px;
+    border-color: transparent;
+    width: 60px;
+    height: 60px;
+    transition: 2s;
+    border-radius: 100px;
+    animation-name: anti-spin;
+    margin-top: -60.5px;
+    animation-duration: 11000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.sam-sun-anti-6 {
+    background-color: transparent;
+    border: solid;
+    border-width: 1px;
+    border-color: transparent;
+    width: 60px;
+    height: 60px;
+    transition: 2s;
+    border-radius: 100px;
+    animation-name: spin;
+    margin-top: -60.5px;
+    animation-duration: 1800000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.sam-sun-anti-7 {
+    background-color: transparent;
+    border: solid;
+    border-width: 1px;
+    border-color: transparent;
+    width: 60px;
+    height: 60px;
+    transition: 2s;
+    border-radius: 100px;
+    animation-name: anti-spin;
+    margin-top: -60.5px;
+    animation-duration: 14000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.mercury {
+    background-color: #000000;
+    background-image: url("../images/mercury.png");
+    background-position-x: 80px;
+    background-size: 145%;
+    border: solid;
+    border-width: 1px;
+    border-color: #8b4affff;
+    width: 20px;
+    height: 20px;
+    margin-left: 32%;
+    margin-top: 70px;
+    box-shadow: 0px 0px 30px 0px #bc97ffff;
+    border-radius: 100px;
+}
+
+.venus {
+    background-color: #000000;
+    background-image: url("../images/venus.png");
+    background-position-x: 50px;
+    background-size: 110%;
+    border: solid;
+    border-width: 1px;
+    border-color: #e06745ff;
+    width: 24px;
+    height: 24px;
+    margin-left: 32%;
+    margin-top: 110px;
+    box-shadow: 0px 0px 30px 0px #eb876aff;
+    transition: 3s;
+    border-radius: 100px;
+    animation-name: spin;
+    animation-duration: 9000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.earth {
+    background-color: #000000;
+    background-image: url("../images/earth.png");
+    background-position-x: 50px;
+    background-size: 120%;
+    border: solid;
+    border-width: 1px;
+    border-color: #6984c2ff;
+    width: 15px;
+    height: 15px;
+    margin-left: 32%;
+    margin-top: 150px;
+    box-shadow: 0px 0px 30px 0px #9ab8fdff;
+    transition: 3s;
+    border-radius: 100px;
+    animation-name: spin;
+    animation-duration: 7100ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.mars {
+    background-color: #000000;
+    background-image: url("../images/mars.png");
+    background-position-x: 60px;
+    background-size: 109%;
+    border: solid;
+    border-width: 1px;
+    border-color: #eb876aff;
+    width: 28px;
+    height: 28px;
+    margin-left: 32%;
+    margin-top: 180px;
+    box-shadow: 0px 0px 30px 0px #faa78fff;
+    transition: 3s;
+    border-radius: 100px;
+    animation-name: spin;
+    animation-duration: 7100ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.jupiter {
+    background-color: #000000;
+    background-image: url("../images/jupiter.png");
+    background-position-x: 60px;
+    background-size: 114%;
+    border: solid;
+    border-width: 1px;
+    border-color: #e2fffaff;
+    width: 27px;
+    height: 27px;
+    margin-left: 32%;
+    margin-top: 220px;
+    box-shadow: 0px 0px 30px 0px #ffffffff;
+    transition: 3s;
+    border-radius: 100px;
+    animation-name: spin;
+    animation-duration: 7100ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.uranus {
+    background-color: #000000;
+    background-image: url("../images/uranus.png");
+    background-position-x: 60px;
+    background-size: 114%;
+    border: solid;
+    border-width: 1px;
+    border-color: #002f62ff;
+    width: 27px;
+    height: 27px;
+    margin-left: 32%;
+    margin-top: 270px;
+    box-shadow: 0px 0px 30px 0px #8cc3ffff;
+    transition: 3s;
+    border-radius: 100px;
+    animation-name: spin;
+    animation-duration: 17100ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.neptune {
+    background-color: #000000;
+    background-image: url("../images/neptune.png");
+    background-position-x: 60px;
+    background-size: 114%;
+    border: solid;
+    border-width: 1px;
+    border-color: #338ceeff;
+    width: 27px;
+    height: 27px;
+    margin-left: 32%;
+    margin-top: 310px;
+    box-shadow: 0px 0px 30px 0px #73b3faff;
+    transition: 3s;
+    border-radius: 100px;
+    animation-name: spin;
+    animation-duration: 17100ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.back-to-reality {
+    width: 150px;
+    height: 50px;
+    border: solid;
+    border-color: white;
+    border-radius: 10px;
+    border-width: 2px;
+    background-color: transparent;
+    color: white;
+}
+
+    .back-to-reality:hover {
+        box-shadow: none;
+        transition: 1s;
+        border: solid;
+        border-width: 2px;
+        border-color: #ffd300ff;
+        color: #ffd300ff;
+    }
+
+h2 {
+    display: inline-flex;
+    color: #ffd300ff;
+    padding-left: 20px;
+    text-transform: uppercase;
+    font-family: Arial;
+}
+
+h5 { 
+    color: white;
+    text-transform: uppercase;
+    font-family: Arial;
+}
