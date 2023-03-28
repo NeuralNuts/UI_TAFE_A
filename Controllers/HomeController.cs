@@ -18,11 +18,6 @@ namespace UX_UI_WEB_APP.Controllers
             return View();
         }
 
-        public IActionResult HomePage()
-        {
-            return View();
-        }
-
         public IActionResult LoginPage()
         {
             return View();
@@ -44,6 +39,11 @@ namespace UX_UI_WEB_APP.Controllers
         }
 
         public IActionResult ProductPage()
+        {
+            return View();
+        }
+
+        public IActionResult HomePage()
         {
             return View();
         }

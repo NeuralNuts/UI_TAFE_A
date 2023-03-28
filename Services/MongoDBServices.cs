@@ -65,5 +65,38 @@ namespace UX_UI_WEB_APP.Services
             ToListAsync();
         }
         #endregion
+
+        #region Authentiactes user login
+        public async Task<UserModel?> AuthenticateUserLoginAsync(
+        string email,
+        string password)
+        {
+            var email_filter = Builders<UserModel>
+            .Filter
+            .Eq(e => e.UserEmail, email);
+
+            var password_filter = Builders<UserModel>
+            .Filter
+            .Eq(e => e.UserPassword, password);
+
+            var filters = Builders<UserModel>
+            .Filter
+            .And(email_filter, password_filter);
+
+            var user_login =
+            await _user_collection
+            .Find(filters)
+            .FirstOrDefaultAsync();
+
+            if (user_login == null)
+            {
+                return null;
+            }
+            else
+            {
+                return user_login;
+            }
+        }
+        #endregion
     }
 }

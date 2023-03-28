@@ -11,14 +11,15 @@
 <body>
     <div class="login-div">
         <h2 class="email-h2">Email</h2>
-        <input />
+        <input id="email-input"/>
 
         <h2>Password</h2>
-        <input />
+        <input type="password" id="password-input"/>
         <br />
 
         <button id="login-button-id">Login</button>
         <br />
+        <h4 id="error-message-incorect-details">Details invalid</h4>
         <a>Sign Up?</a>
     </div>
 
@@ -29,9 +30,34 @@
 
 <script>
 
-    $("#login-button-id").click(function (event)){
+    $("#login-button-id").click(function (event){
 
-        window.location.href = ""
+        var email_input = $("#email-input").val()
+        var password_input = $("#password-input").val()
+        var response_good = "Authorized"
+        var response_bad = '"Unauthorized"'
+        var url = "https://localhost:7034/Home/HomePage"
+        var error_message_incorect_details = $("#error-message-incorect-details")
+        sessionStorage.setItem("email_input", email_input)
+        $.ajax({
+            type: "GET",
+            url: "https://localhost:7034/api/User/AuthenticateUserLogin" + "?" + 
+                                                             "email=" +
+                                                             email_input +
+                                                             "&password=" +
+                                                             password_input,
+            dataType: "JSON",
+            data: Request,
+            success: function (data){
+                if (data == response_good){
+                    error_message_incorect_details.hide()
+                    window.location.href = url
+                }
+            },
+            error: function (data){
+                error_message_incorect_details.show()
+            }
+        })
     });
 
 
