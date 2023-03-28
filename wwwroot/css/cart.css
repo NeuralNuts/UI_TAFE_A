@@ -70,6 +70,7 @@ input {
 .crud-buttons {
     margin-top: 35px;
     border: solid;
+    margin-right: 40px;
     font-size: 1px;
     border-radius: 10px;
     background-color: #13172d;
