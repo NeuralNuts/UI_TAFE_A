@@ -1,9 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "_LoginPage";
+    ViewData["Title"] = "LoginPage";
 }
 
-<!DOCTYPE html>
-<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,10 +17,23 @@
         <input />
         <br />
 
-        <button>Login</button>
+        <button id="login-button-id">Login</button>
         <br />
         <a>Sign Up?</a>
     </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>
+
+<script>
+
+    $("#login-button-id").click(function (event)){
+
+        window.location.href = ""
+    });
+
+
+</script>
 @RenderBody()

@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "HomePage";
+    Layout = "_Layout";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/site.css" />
+</head>
+
+<div class="hero-page">
+    <h2 class="hero-text">Sams warehouse</h2>
+    <hr />
+    <button class="hero-button" onclick="window.location.href =
+                        '@Url.Action("ProductPage", "Home")'">
+        Shop now
+    </button>
+</div>

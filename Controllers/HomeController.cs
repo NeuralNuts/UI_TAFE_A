@@ -18,6 +18,16 @@ namespace UX_UI_WEB_APP.Controllers
             return View();
         }
 
+        public IActionResult HomePage()
+        {
+            return View();
+        }
+
+        public IActionResult LoginPage()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -22,7 +22,7 @@
             <li>
                 <button onclick=
                         "window.location.href = 
-                        '@Url.Action("Index", "Home")'">Home
+                        '@Url.Action("HomePage", "Home")'">Home
                 </button>
             </li>
 
@@ -61,18 +61,8 @@
             </li>
         </ul>
     </header>
-
-    <div class="hero-page">
-        <h2 class="hero-text">Sams warehouse</h2>
-        <hr />
-        <button class="hero-button" onclick="window.location.href =
-                        '@Url.Action("ProductPage", "Home")'">Shop now
-        </button>
-    </div>
-
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
