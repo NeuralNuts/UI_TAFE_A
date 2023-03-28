@@ -19,6 +19,7 @@
 
     <br />
     <button class="check-out-button">Check out</button>
+    <input id="total-price" placeholder="hdfauffawfa" class="total-price-input" value=""/>
 </div>
 
 <script>
@@ -75,11 +76,19 @@
                             <div>
                                 <h2>Price</h2>
                                 <hr class="qty-hr"/>
-                                <input class="qty-id" value="${data[i].itemPrice}$"/>
+                                <input class="qty-id" id="price-id" value="${data[i].itemPrice}$"/>
                             </div>
                         </div>`
 
             body.innerHTML += div
+
+            var price = data[i].itemPrice
+
+            var total = 
+
+            price = total
+
+            console.log(price)
         }
     }
 
