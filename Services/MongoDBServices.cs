@@ -88,7 +88,7 @@ namespace UX_UI_WEB_APP.Services
         #endregion
 
         #region Gets items based on id
-        public async Task<ItemModel> GetItemById(string id)
+        public async Task<List<ItemModel>> GetItemById(string id)
         {
             var id_filter =
             Builders<ItemModel>
@@ -96,7 +96,7 @@ namespace UX_UI_WEB_APP.Services
             .Eq(u => u.Id, id);
 
             return await _item_collection.Find(id_filter).
-            FirstOrDefaultAsync();
+            ToListAsync();
         }
         #endregion
 

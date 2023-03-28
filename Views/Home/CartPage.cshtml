@@ -13,26 +13,16 @@
 
 <div class="parent-cart-div">
 
-    <div class="cart-div">
-        <div class="items-div">
-            <div>
-                <h2>Items</h2>
-                <hr />
-                <input id="item-id" />
-            </div>
-
-            <div>
-                <h2>Qty</h2>
-                <hr class="qty-hr"/>
-                <input class="qty-id"/>
-            </div>
-        </div>
+    <div class="cart-div" id="cart-id">
+        
         <br />
         <button class="check-out-button">Check out</button>
     </div>
 </div>
 
 <script>
+
+    var cart_array = []
 
     $.ajax({
         type: "GET",
@@ -54,11 +44,36 @@
                     dataType: "JSON",
                     success: function (response) {
 
+                        cart_array = response
+                        buildCartDivs(cart_array)
                         console.log(response)
                     }
                 })
             }
         }        
     })
+
+    function buildCartDivs(data) {
+        var body = document.getElementById('cart-id')
+
+        for (var i = 0; i < data.length; i++) {
+            var div = `
+                        <div class="items-div">
+                            <div>
+                                <h2>Items</h2>
+                                <hr />
+                                <input id="item-id" value="${data[i].itemName}"/>
+                            </div>
+
+                            <div>
+                                <h2>Qty</h2>
+                                <hr class="qty-hr"/>
+                                <input class="qty-id" value="${data[i].itemUnitSize}"/>
+                            </div>
+                        </div>`
+
+            body.innerHTML += div
+        }
+    }
 
 </script>
