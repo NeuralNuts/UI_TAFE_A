@@ -18,5 +18,8 @@ namespace UX_UI_WEB_APP.Models
 
         [BsonElement("item_description")]
         public string? ItemDescription { get; set; } = null!;
+
+        [BsonElement("item_price")]
+        public double? ItemPrice { get; set; } = null!;
     }
 }
