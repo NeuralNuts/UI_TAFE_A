@@ -58,7 +58,7 @@ namespace UX_UI_WEB_APP.Services
         #endregion
 
         #region Gets users items
-        public async Task<CartModel> GetUserItems(string email)
+        public async Task<List<CartModel>> GetUserItems(string email)
         {
             var email_filter =
             Builders<CartModel>
@@ -66,7 +66,7 @@ namespace UX_UI_WEB_APP.Services
             .Eq(u => u.UserEmail, email);
 
             return await _cart_collection.Find(email_filter).
-            FirstAsync();
+            ToListAsync();
         }
         #endregion
 
@@ -96,7 +96,7 @@ namespace UX_UI_WEB_APP.Services
             .Eq(u => u.Id, id);
 
             return await _item_collection.Find(id_filter).
-            FirstAsync();
+            FirstOrDefaultAsync();
         }
         #endregion
 
