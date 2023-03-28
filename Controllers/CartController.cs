@@ -4,6 +4,7 @@ using UX_UI_WEB_APP.Models;
 using UX_UI_WEB_APP.Services;
 using UI_TAFE_A.Models;
 using System.ComponentModel.DataAnnotations;
+using MongoDB.Driver.Linq;
 
 namespace UX_UI_WEB_APP.Controllers
 {
@@ -34,6 +35,21 @@ namespace UX_UI_WEB_APP.Controllers
         public async Task<List<CartModel>> GetAllCartItems()
         {
             return await _mongodb_services.GetAllCartItemsAsync();
+        }
+        #endregion
+
+        #region Sum item price
+        /// <summary>
+        /// Gets all sensor readings [Limited to 100 readings due to swagger not being able to load in more then 5000 records]
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("SumCartPrice")]
+        public async Task<IActionResult> SumCartPrice(double[] price)
+        {
+            var sum = price.Sum();
+
+            return Ok(sum);
         }
         #endregion
 

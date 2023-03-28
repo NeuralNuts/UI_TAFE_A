@@ -19,12 +19,13 @@
 
     <br />
     <button class="check-out-button">Check out</button>
-    <input id="total-price" placeholder="hdfauffawfa" class="total-price-input" value=""/>
+    <input id="total-price" placeholder="Total price" class="total-price-input" value=""/>
 </div>
 
 <script>
 
     var cart_array = []
+    var item_array = []
 
     $.ajax({
         type: "GET",
@@ -45,7 +46,7 @@
                                                                     data[i].itemId,
                     dataType: "JSON",
                     success: function (response) {
-
+                        
                         cart_array = response
                         buildCartDivs(cart_array)
                         console.log(response)
@@ -56,37 +57,34 @@
     })
 
     function buildCartDivs(data) {
+
         var body = document.getElementById('cart-id')
 
         for (var i = 0; i < data.length; i++) {
+
             var div = `
-                        <div class="items-div">
-                            <div>
-                                <h2>Items</h2>
-                                <hr />
-                                <input id="item-id" value="${data[i].itemName}"/>
-                            </div>
+                            <div class="items-div" id="items-id">
+                                <div>
+                                    <h2>Items</h2>
+                                    <hr />
+                                    <input id="item-id" value="${data[i].itemName}"/>
+                                </div>
 
-                            <div>
-                                <h2>Qty</h2>
-                                <hr class="qty-hr"/>
-                                <input class="qty-id" value="${data[i].itemUnitSize}"/>
-                            </div>
+                                <div>
+                                    <h2>Qty</h2>
+                                    <hr class="qty-hr"/>
+                                    <input class="qty-id" value="${data[i].itemUnitSize}"/>
+                                </div>
 
-                            <div>
-                                <h2>Price</h2>
-                                <hr class="qty-hr"/>
-                                <input class="qty-id" id="price-id" value="${data[i].itemPrice}$"/>
-                            </div>
-                        </div>`
-
+                                <div>
+                                    <h2>Price</h2>
+                                    <hr class="qty-hr"/>
+                                    <input class="qty-id" id="price-id" value="$${data[i].itemPrice}"/>
+                                </div>
+                                    <button class="crud-buttons">${data[i].id}</button>
+                                    <button class="crud-buttons">${data[i].id}</button>
+                            </div>`
             body.innerHTML += div
-
-            function myFunction() {
-                var price = data[i].itemPrice
-                var total = +price;
-                document.getElementById("totalPrice").innerHTML = total;
-            }
         }
     }
 

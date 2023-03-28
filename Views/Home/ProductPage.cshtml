@@ -59,16 +59,35 @@
                     id[j].onclick = function () {
 
                         $.ajax({
-                            type: "POST",
-                            url: "https://localhost:7034/api/Cart/PostSingleCartItem?" + 
-                                                                          "UserEmail=" +
-                                                                           sessionStorage.getItem("email_input") +
-                                                                           "&ItemId=" +
+                            type: "GET",
+                            url: "https://localhost:7034/api/Item/GetItemById?" +
+                                                                           "id=" +
                                                                            this.innerHTML,
                             dataType: "JSON",
-                            success: function (response) {
+                            success: function (data) {
                                 
-                                console.log(response)
+                                console.log(data)
+
+                                for (var i = 0; i < data.length; i++) {
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "https://localhost:7034/api/Cart/PostSingleCartItem?" +
+                                                                                                "UserEmail=" +
+                                                                                                sessionStorage.getItem("email_input") +
+                                                                                                "&ItemName=" +
+                                                                                                data[i].itemName +
+                                                                                                "&ItemUnitSize=" +
+                                                                                                data[i].itemUnitSize +
+                                                                                                "&ItemPrice=" +
+                                                                                                data[i].itemPrice,
+                                        dataType: "JSON",
+                                        success: function (response) {
+
+                                            console.log(response)
+                                        }
+                                    })
+                                }
                             }
                         })
                     }

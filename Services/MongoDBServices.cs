@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using UI_TAFE_A.Models;
+using System.Linq;
 #endregion
 
 namespace UX_UI_WEB_APP.Services
