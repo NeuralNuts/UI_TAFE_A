@@ -46,10 +46,21 @@
                                         <h2>Unit Size:</h2>
                                         <input class="text-input" id="unit-size-input" value="${data[i].itemUnitSize}"/>
 
-                                        <button class="add-button" id="add-to-list">Add product to cart</button>
+                                        <button class="add-button" id="add-to-list" >${data[i].id}</button>
                                     </div>
                             </div>`
             body.innerHTML += div
+
+            var id = body.getElementsByClassName('add-button')
+
+            for (var i = 0, len = id.length; i < len; i++) {
+                for (var j = 0, len = id.length; j < len; j++) {
+
+                    id[j].onclick = function () {
+                        id_input.val(this.innerHTML)
+                    }
+                }
+            };
         }
     }
 </script>
