@@ -35,24 +35,9 @@
         dataType: "JSON",
         success: function (data) {
 
+            cart_array = data
+            buildCartDivs(cart_array)
             console.log(data)
-
-            for (var i = 0; i < data.length; i++) {
-
-                $.ajax({
-                    type: "GET",
-                    url: "https://localhost:7034/api/Item/GetItemById?" +
-                                                                    "id=" +
-                                                                    data[i].itemId,
-                    dataType: "JSON",
-                    success: function (response) {
-                        
-                        cart_array = response
-                        buildCartDivs(cart_array)
-                        console.log(response)
-                    }
-                })
-            }
         }        
     })
 
