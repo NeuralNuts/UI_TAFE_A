@@ -3,6 +3,8 @@ using UX_UI_WEB_APP.Models;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 #endregion
 
 namespace UX_UI_WEB_APP.Services
@@ -44,6 +46,15 @@ namespace UX_UI_WEB_APP.Services
         {
             return await _item_collection.Find(new BsonDocument()).
             ToListAsync();
+        }
+        #endregion
+
+        #region Create single item 
+        public async Task<Object?> PostSingleItemAsync(ItemModel item_model)
+        {
+            await _item_collection.InsertOneAsync(item_model);
+
+            return true;
         }
         #endregion
 

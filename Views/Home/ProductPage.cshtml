@@ -10,18 +10,45 @@
     <link rel="stylesheet" type="text/css" href="/css/product.css" />
 </head>
 
-<div class="parent-product-div">
+<div class="god-div" id="god-div">
 
-    <div class="products-div">
-        <h2>Title:</h2>
-        <input class="text-input" id="title-input" />
-
-        <h2>Description:</h2>
-        <textarea class="add-text-area" id="description-input"></textarea>
-
-        <h2>Unit Size:</h2>
-        <input class="text-input" id="unit-size-input" />
-
-        <button class="add-button" id="add-to-list">Add product to cart</button>
-    </div>
 </div>
+
+<script>
+
+    var product_array = []
+
+    $.ajax({
+        type: "GET",
+        url: "https://localhost:7034/api/Item/GetAllItems",
+        dataType: "JSON",
+        success: function (response) {
+            product_array = response
+            buildProductDivs(product_array)
+            console.log(product_array)
+        }
+    })
+
+    function buildProductDivs(data) {
+        var body = document.getElementById('god-div')
+
+        for (var i = 0; i < data.length; i++) {
+            var div = `
+                            <div class="parent-product-div" id="parent-product-div">
+                                    <div class="products-div">
+                                        <h2>Title:</h2>
+                                        <input class="text-input" id="title-input" value="${data[i].itemName}" />
+
+                                        <h2>Description:</h2>
+                                        <textarea class="add-text-area" id="description-input">${data[i].itemDescription}</textarea>
+
+                                        <h2>Unit Size:</h2>
+                                        <input class="text-input" id="unit-size-input" value="${data[i].itemUnitSize}"/>
+
+                                        <button class="add-button" id="add-to-list">Add product to cart</button>
+                                    </div>
+                            </div>`
+            body.innerHTML += div
+        }
+    }
+</script>

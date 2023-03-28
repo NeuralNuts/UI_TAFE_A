@@ -5,14 +5,18 @@
     display: none;
 }
 
-.parent-product-div {
+.god-div {
     position: absolute;
+    margin-top: 6%;
+}
+
+.parent-product-div {
     display: inline-grid;
     background-color: #0b0b0bdf;
     border-radius: 10px;
     border: solid;
     border-color: #ffffff30;
-    margin-top: 6%;
+    margin-top: 1%;
     width: 98.9%;
 }
 

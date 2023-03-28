@@ -7,7 +7,6 @@ namespace UX_UI_WEB_APP.Controllers
 {
     [Controller]
     [Route("~/api/[controller]")]
-    //
     public class ItemController : Controller
     {
         #region region MongoDBServices Variable
@@ -30,9 +29,21 @@ namespace UX_UI_WEB_APP.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetAllItems")]
-        public async Task<List<ItemModel>> GetAllItemsSensors()
+        public async Task<List<ItemModel>> GetAllItems()
         {
             return await _mongodb_services.GetAllItemsAsync();
+        }
+        #endregion
+
+
+        #region Post an item
+        [HttpPost]
+        [Route("PostSingleItem")]
+        public async Task<IActionResult> PostSingleItem(ItemModel item_model)
+        {
+            await _mongodb_services.PostSingleItemAsync(item_model);
+
+            return Ok("Item created");
         }
         #endregion
     }
