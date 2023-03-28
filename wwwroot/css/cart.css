@@ -69,20 +69,20 @@ input {
 
 .crud-buttons {
     margin-top: 35px;
-    margin-left: 10px;
     border: solid;
+    font-size: 1px;
     border-radius: 10px;
     background-color: #13172d;
     height: 60px;
-    width: 120px;
-    color: #c3c7d5ca;
+    width: 100px;
+    color: transparent;
 }
 
 .crud-buttons:hover {
     font-style: normal;
     box-shadow: none;
     border: solid;
-    color: white;
+    color: transparent;
     border-color: white;
     border-radius: 10px;
     border-width: 3px;
