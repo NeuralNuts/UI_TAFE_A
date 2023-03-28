@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
-namespace UX_UI_WEB_APP.Models
+namespace UI_TAFE_A.Models
 {
-    public class UserModel
+    public class CartModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -13,10 +13,7 @@ namespace UX_UI_WEB_APP.Models
         [BsonElement("user_email")]
         public string? UserEmail { get; set; } = null;
 
-        [BsonElement("user_password")]
-        public string? UserPassword { get; set; } = null;
-
-        [BsonElement("user_role")]
-        public string? UserRole { get; set; } = null;
+        [BsonElement("item_id")]
+        public string? ItemId { get; set; } = null;
     }
 }

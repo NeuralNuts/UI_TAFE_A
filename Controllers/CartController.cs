@@ -2,19 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using UX_UI_WEB_APP.Models;
 using UX_UI_WEB_APP.Services;
+using UI_TAFE_A.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace UX_UI_WEB_APP.Controllers
 {
     [Controller]
     [Route("~/api/[controller]")]
-    public class ItemController : Controller
+    public class CartController : Controller
     {
         #region region MongoDBServices Variable
         private readonly MongoDBServices _mongodb_services;
         #endregion
 
         #region Setting _mongodb_services To mongodb_services
-        public ItemController(
+        public CartController(
         MongoDBServices
         mongodbServices)
         {
@@ -22,42 +24,46 @@ namespace UX_UI_WEB_APP.Controllers
         }
         #endregion
 
-        #region Http get all items
+        #region Http get all cart items
         /// <summary>
         /// Gets all sensor readings [Limited to 100 readings due to swagger not being able to load in more then 5000 records]
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("GetAllItems")]
-        public async Task<List<ItemModel>> GetAllItems()
+        [Route("GetAllCartItems")]
+        public async Task<List<CartModel>> GetAllCartItems()
         {
-            return await _mongodb_services.GetAllItemsAsync();
+            return await _mongodb_services.GetAllCartItemsAsync();
         }
         #endregion
 
-        #region Get item by id
+        #region Http get user cart items
         /// <summary>
         /// Gets all sensor readings [Limited to 100 readings due to swagger not being able to load in more then 5000 records]
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("GetItemById")]
-        public async Task<IActionResult> GetItemById(string id)
+        [Route("GetUserCartItems")]
+        public async Task<IActionResult> GetUserCartItems(string email)
         {
-            var result = await _mongodb_services.GetItemById(id);
+            var result = await _mongodb_services.GetUserItems(email);
 
             return Ok(result);
         }
         #endregion
 
-        #region Post an item
+        #region Post single cart item
+        /// <summary>
+        /// Gets all sensor readings [Limited to 100 readings due to swagger not being able to load in more then 5000 records]
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
-        [Route("PostSingleItem")]
-        public async Task<IActionResult> PostSingleItem(ItemModel item_model)
+        [Route("PostSingleCartItem")]
+        public async Task<IActionResult> PostCartItem(CartModel cart_model)
         {
-            await _mongodb_services.PostSingleItemAsync(item_model);
+            await _mongodb_services.AddSingleCartItemAsync(cart_model);
 
-            return Ok("Item created");
+            return Ok("Item added to cart");
         }
         #endregion
     }

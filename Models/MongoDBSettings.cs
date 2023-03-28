@@ -13,5 +13,8 @@
 
         public string ItemsCollection
         { get; set; } = null!;
+
+        public string CartCollection
+        { get; set; } = null!;
     }
 }

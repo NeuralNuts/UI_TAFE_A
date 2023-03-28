@@ -63,5 +63,16 @@ namespace UX_UI_WEB_APP.Controllers
             }
         }
         #endregion
+
+        #region Post an item id
+        [HttpPost]
+        [Route("PostItemId")]
+        public async Task<IActionResult> PostItemId(UserModel user_model)
+        {
+            await _mongodb_services.PostItemAsync(user_model);
+
+            return Ok("Item id added to cart");
+        }
+        #endregion
     }
 }

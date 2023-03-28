@@ -57,7 +57,7 @@
                 for (var j = 0, len = id.length; j < len; j++) {
 
                     id[j].onclick = function () {
-                        id_input.val(this.innerHTML)
+                        sessionStorage.setItem("item_id", this.innerHTML)
                     }
                 }
             };
