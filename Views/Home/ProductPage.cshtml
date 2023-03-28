@@ -57,7 +57,20 @@
                 for (var j = 0, len = id.length; j < len; j++) {
 
                     id[j].onclick = function () {
-                        sessionStorage.setItem("item_id", this.innerHTML)
+
+                        $.ajax({
+                            type: "POST",
+                            url: "https://localhost:7034/api/Cart/PostSingleCartItem?" + 
+                                                                          "UserEmail=" +
+                                                                           sessionStorage.getItem("email_input") +
+                                                                           "&ItemId=" +
+                                                                           this.innerHTML,
+                            dataType: "JSON",
+                            success: function (response) {
+                                
+                                console.log(response)
+                            }
+                        })
                     }
                 }
             };
