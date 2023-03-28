@@ -7,7 +7,9 @@
 
 .god-div {
     position: absolute;
+    overflow: auto;
     margin-top: 6%;
+    max-height: 100%;
 }
 
 .parent-product-div {
@@ -35,14 +37,13 @@ h2 {
 }
 
 .add-button {
-    background-color: #008bd1;
+    background-color: #13172d;
     width: 300px;
     height: 30px;
     margin-top: 70px;
-    margin-left: 13.1%;
+    margin-left: 13.6%;
     border: solid;
-    border-color: #3ebeff71;
-    color: #ffffffcf;
+    color: #c3c7d5ca;
     border-width: 2px;
     border-radius: 0px 0px 5px 0px;
 }
@@ -52,7 +53,7 @@ h2 {
     box-shadow: none;
     border: solid;
     color: white;
-    background-color: #00aaff;
+    background-color: #00aaff4a;
     border-color: #3ebeff;
     border-width: 2px;
 }
