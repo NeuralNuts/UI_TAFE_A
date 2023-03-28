@@ -82,13 +82,11 @@
 
             body.innerHTML += div
 
-            var price = data[i].itemPrice
-
-            var total = 
-
-            price = total
-
-            console.log(price)
+            function myFunction() {
+                var price = data[i].itemPrice
+                var total = +price;
+                document.getElementById("totalPrice").innerHTML = total;
+            }
         }
     }
 
