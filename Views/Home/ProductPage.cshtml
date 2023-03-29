@@ -44,13 +44,13 @@
                             <div class="parent-product-div" id="parent-product-div">
                                     <div class="products-div">
                                         <h2>Title:</h2>
-                                        <input class="text-input" id="title-input" value="${data[i].itemName}" />
+                                        <input class="text-input" id="title-input" value="${data[i].itemName}" readonly="readonly"/>
 
                                         <h2>Description:</h2>
-                                        <textarea class="add-text-area" id="description-input">${data[i].itemDescription}</textarea>
+                                        <textarea class="add-text-area" id="description-input" readonly="readonly">${data[i].itemDescription}</textarea>
 
                                         <h2>Unit Size:</h2>
-                                        <input class="text-input" id="unit-size-input" value="${data[i].itemUnitSize}"/>
+                                        <input class="text-input" id="unit-size-input" value="${data[i].itemUnitSize}" readonly="readonly"/>
 
                                         <button class="add-button" id="add-to-list" >${data[i].id}</button>
                                     </div>
