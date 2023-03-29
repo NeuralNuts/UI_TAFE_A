@@ -5,6 +5,15 @@
     margin-bottom: 60px;
 }
 
+img {
+    background-color: white;
+    margin: 13px;
+    border-radius: 10px 0px 0px 0px;
+    width: 8%;
+    height: 15%;
+    margin-right: 92%;
+}
+
 .login-div {
     position: absolute;
     text-align: center;
