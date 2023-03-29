@@ -98,5 +98,20 @@ namespace UX_UI_WEB_APP.Controllers
             return Ok("Cart qty updated");
         }
         #endregion
+
+        #region Delete cart item 
+        /// <summary>
+        /// Gets all sensor readings [Limited to 100 readings due to swagger not being able to load in more then 5000 records]
+        /// </summary>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route("DeleteItem")]
+        public async Task<IActionResult> DeleteItem(string id)
+        {
+            await _mongodb_services.DeleteCartItemAsync(id);
+
+            return Ok("Cart item deleted");
+        }
+        #endregion
     }
 }

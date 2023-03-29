@@ -17,6 +17,8 @@
         
     </div>
 
+    <div id="loader" class="lds-dual-ring hidden overlay"></div>
+
     <br />
     <button class="check-out-button">Check out</button>
     <input id="total-price" placeholder="Total price" class="total-price-input" value=""/>
@@ -33,15 +35,19 @@
                                                                "email=" +
                                                                 sessionStorage.getItem("email_input"),
         dataType: "JSON",
+        beforeSend: function () {
+            $('#loader').removeClass('hidden')
+        },
         success: function (data) {
 
             cart_array = data
             buildCartDivs(cart_array)
             console.log(data)
-        }        
+        },
+        complete: function () {
+            $('#loader').addClass('hidden')
+        },
     })
-
-
 
     function buildCartDivs(data) {
 
@@ -68,10 +74,34 @@
                                             <hr class="qty-hr"/>
                                             <input class="qty-id" id="price-id" value="$${data[i].itemPrice}"/>
                                         </div>
-                                            <button class="minus-button" onclick="decrement()" id="minus-id">${data[i].id}</button>
-                                            <button class="add-button" onclick="increment()" id="plus-id">${data[i].id}</button>
+                                            <button class="minus-button" id="minus-id">${data[i].id}</button>
+                                            <button class="add-button" id="delete-id-id">${data[i].id}</button>
                                     </div>`
             body.innerHTML += div
+
+            var id = body.getElementsByClassName('add-button')
+
+            for (var i = 0, len = id.length; i < len; i++) {
+                for (var j = 0, len = id.length; j < len; j++) {
+
+                    id[j].onclick = function () {
+
+                        $.ajax({
+                            type: "DELETE",
+                            url: "https://localhost:7034/api/Cart/DeleteItem?" +
+                                "id=" +
+                                this.innerHTML,
+
+                            dataType: "JSON",
+                            success: function (data) {
+
+                                
+                                console.log(data)
+                            }
+                        })
+                    }
+                }
+            };
         }
     }
 </script>
