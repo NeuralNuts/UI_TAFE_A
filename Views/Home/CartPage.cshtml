@@ -10,22 +10,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/cart.css" />
 </head>
+
 <div class="god-div">
+
     <div class="parent-cart-div">
 
-        <div class="cart-div" id="cart-id">
+        <div class="child-cart-div" id="cart-id">
         </div>
 
-        <div id="loader" class="lds-dual-ring hidden overlay"></div>
+        <div id="spinner-loader-id" class="lds-dual-ring hidden overlay"></div>
 
         <br />
         <button class="check-out-button">Check out</button>
-        <input id="total-price" placeholder="Total price" class="total-price-input" value="" />
+        <input id="total-price-id" placeholder="Total price" class="total-price-input" value="" />
     </div>
 
-    <div class="parent-2-cart-div" id="edit-page-id">
+    <div class="parent-edit-div" id="edit-page-id">
+
         <h2>Edit div:</h2>
-        <input placeholder="Chosen cart item.." id="id-input"/>
+        <input placeholder="Chosen cart item.." id="edit-id"/>
         <br />
 
         <div class="update-div">
@@ -35,7 +38,6 @@
                 <input placeholder="Add qty..." maxlength="1" id="qty-input-id"/>
                 <button class="update-button" id="update-button">Update</button>
             </div>
-
         </div>
     </div>
 </div>
@@ -52,7 +54,7 @@
                                                                 sessionStorage.getItem("email_input"),
         dataType: "JSON",
         beforeSend: function () {
-            $('#loader').removeClass('hidden')
+            $('#spinner-loader-id').removeClass('hidden')
         },
         success: function (data) {
 
@@ -61,13 +63,13 @@
             console.log(data)
         },
         complete: function () {
-            $('#loader').addClass('hidden')
+            $('#spinner-loader-id').addClass('hidden')
         },
     })
 
     $("#update-button").click(function (event) {
 
-        var input = document.getElementById('id-input')
+        var input = document.getElementById('edit-id')
 
         $.ajax({
             type: "PUT",
@@ -78,14 +80,14 @@
 
             dataType: "JSON",
             beforeSend: function () {
-                $('#loader').removeClass('hidden')
+                $('#spinner-loader-id').removeClass('hidden')
             },
             success: function (data) {
 
                 console.log(data)
             },
             complete: function () {
-                $('#loader').addClass('hidden')
+                $('#spinner-loader-id').addClass('hidden')
             },
         })
         window.location.reload()
@@ -98,30 +100,31 @@
         for (var i = 0; i < data.length; i++) {
 
             var div = `
-                                    <div class="items-div" id="items-id">
-                                        <div>
-                                            <h2>Items</h2>
-                                            <hr />
-                                            <input id="item-id" value="${data[i].itemName}" readonly="readonly"/>
-                                        </div>
+                        <div class="items-div" id="items-id">
+                            <div>
+                                <h2>Items</h2>
+                                <hr />
+                                <input id="item-id" value="${data[i].itemName}" readonly="readonly"/>
+                            </div>
 
-                                        <div>
-                                            <h2>Qty</h2>
-                                            <hr class="qty-hr"/>
-                                            <input class="qty-id" id="qty-input" value="${data[i].itemQty}" readonly="readonly"/>
-                                        </div>
+                            <div>
+                                <h2>Qty</h2>
+                                <hr class="qty-hr"/>
+                                <input class="qty-id" id="qty-input" value="${data[i].itemQty}" readonly="readonly"/>
+                            </div>
 
-                                        <div>
-                                            <h2>Price</h2>
-                                            <hr class="qty-hr"/>
-                                            <input class="qty-id" id="price-id" value="$${data[i].itemPrice}" readonly="readonly"/>
-                                        </div>
-                                            <button class="minus-button" id="edit-id">${data[i].id}</button>
-                                            <button class="add-button" id="delete-id-id">${data[i].id}</button>
-                                    </div>`
+                            <div>
+                                <h2>Price</h2>
+                                <hr class="qty-hr"/>
+                                <input class="qty-id" id="price-id" value="$${data[i].itemPrice}" readonly="readonly"/>
+                            </div>
+
+                            <button class="edit-button">${data[i].id}</button>
+                            <button class="delete-button">${data[i].id}</button>
+                        </div>`
             body.innerHTML += div
 
-            var id = body.getElementsByClassName('add-button')
+            var id = body.getElementsByClassName('delete-button')
 
             for (var i = 0, len = id.length; i < len; i++) {
                 for (var j = 0, len = id.length; j < len; j++) {
@@ -146,12 +149,12 @@
                 }
             };
 
-            var id_1 = body.getElementsByClassName('minus-button')
-            var input = document.getElementById('id-input')
+            var edit_button = body.getElementsByClassName('edit-button')
+            var input = document.getElementById('edit-id')
 
-            for (var g = 0, len = id_1.length; g < len; g++) {
+            for (var g = 0, len = edit_button.length; g < len; g++) {
 
-                id_1[g].onclick = function () {
+                edit_button[g].onclick = function () {
 
                     input.value = this.innerHTML
                 }
