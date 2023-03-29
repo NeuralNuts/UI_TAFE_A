@@ -2,6 +2,10 @@
     
 }
 
+.god-div {
+    display: none;
+}
+
 .hero-page {
     display: none;  
 }
@@ -9,11 +13,11 @@
 .parent-cart-div {
     position: absolute;
     background-color: #0b0b0bdf;
-    border-radius: 10px;
+    border-radius: 10px 0px 10px 10px;
     border: solid;
     border-color: #ffffff30;
     margin-top: 6%;
-    width: 40%;
+    width: 41%;
     height: 85%;
 }
 
@@ -54,7 +58,7 @@ hr {
 input {
     margin-bottom: 10%;
     margin-left: 10px;
-    width: 15vh;
+    width: 19vh;
     border: none;
     font-family: Arial;
     font-size: 20px;
@@ -128,7 +132,7 @@ input {
     background-color: #13172d;
     height: 60px;
     width: 150px;
-    margin-top: 92.5%;
+    margin-top: 90%;
     color: #c3c7d5ca;
 }
 
