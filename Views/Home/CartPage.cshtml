@@ -24,7 +24,8 @@
     </div>
 
     <div class="parent-2-cart-div">
-        <button>awfafawf</button>
+        <h2>Edit div:</h2>
+        <input placeholder="Chosen cart item.." id="id-input"/>
     </div>
 </div>
 
@@ -78,7 +79,7 @@
                                             <hr class="qty-hr"/>
                                             <input class="qty-id" id="price-id" value="$${data[i].itemPrice}"/>
                                         </div>
-                                            <button class="minus-button" id="minus-id">${data[i].id}</button>
+                                            <button class="minus-button" id="edit-id">${data[i].id}</button>
                                             <button class="add-button" id="delete-id-id">${data[i].id}</button>
                                     </div>`
             body.innerHTML += div
@@ -107,6 +108,17 @@
                     }
                 }
             };
+
+            var id_1 = body.getElementsByClassName('minus-button')
+            var input = document.getElementById('id-input')
+
+            for (var g = 0, len = id_1.length; g < len; g++) {
+
+                id_1[g].onclick = function () {
+
+                    input.value = this.innerHTML
+                }
+            }
         }
     }
 </script>
