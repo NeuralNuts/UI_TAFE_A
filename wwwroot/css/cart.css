@@ -3,7 +3,7 @@
 }
 
 .god-div {
-    display: none;
+    
 }
 
 .hero-page {
@@ -13,12 +13,24 @@
 .parent-cart-div {
     position: absolute;
     background-color: #0b0b0bdf;
-    border-radius: 10px 0px 10px 10px;
+    border-radius: 10px 0px 0px 10px;
     border: solid;
     border-color: #ffffff30;
     margin-top: 4%;
     width: 41%;
     height: 86%;
+}
+
+.parent-2-cart-div {
+    position: absolute;
+    background-color: #0b0b0bdf;
+    border-radius: 0px 10px 10px 0px;
+    border: solid;
+    border-color: #ffffff30;
+    margin-top: 4%;
+    width: 56%;
+    margin-left: 42.9%;
+    height: 86%
 }
 
 .cart-div {
