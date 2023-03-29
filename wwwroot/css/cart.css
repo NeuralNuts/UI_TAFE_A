@@ -63,29 +63,60 @@ input {
 }
 
 .total-price-input {
-    margin-top: 122%;
+    margin-top: 90%;
     margin-left: 60%;
 }
 
-.crud-buttons {
+.add-button {
+    background-image: url("/images/bin.png");
+    background-size: 56px;
+    background-position-x: -1px;
+    background-position-y: -2.5px;
     margin-top: 35px;
     border: solid;
     margin-right: 40px;
     font-size: 1px;
-    border-radius: 10px;
+    border-radius: 80px;
     background-color: #13172d;
-    height: 60px;
-    width: 100px;
+    height: 57px;
+    width: 60px;
     color: transparent;
 }
 
-.crud-buttons:hover {
+.minus-button {
+    background-image: url("/images/edit.png");
+    background-size: 56px;
+    background-position-x: 4px;
+    background-position-y: -6.5px;
+    margin-top: 35px;
+    border: solid;
+    margin-right: 40px;
+    font-size: 1px;
+    border-radius: 80px;
+    background-color: #13172d;
+    height: 57px;
+    width: 60px;
+    color: transparent;
+}
+
+.minus-button:hover {
     font-style: normal;
     box-shadow: none;
     border: solid;
+    background-color: #00aaff4a;
     color: transparent;
     border-color: white;
-    border-radius: 10px;
+    border-width: 3px;
+}
+
+
+.add-button:hover {
+    font-style: normal;
+    box-shadow: none;
+    border: solid;
+     background-color: #00aaff4a;
+    color: transparent;
+    border-color: white;
     border-width: 3px;
 }
 
@@ -97,7 +128,7 @@ input {
     background-color: #13172d;
     height: 60px;
     width: 150px;
-    margin-top: 96%;
+    margin-top: 92.5%;
     color: #c3c7d5ca;
 }
 

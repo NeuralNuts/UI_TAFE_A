@@ -80,6 +80,26 @@ namespace UX_UI_WEB_APP.Services
         }
         #endregion
 
+        #region Updates The Precipitation For A Single Device
+        public async Task UpdateCartQtyAsync(string id, int qty)
+        {
+            FilterDefinition<CartModel> filter =
+            Builders<CartModel>
+            .Filter
+            .Eq(u => u.Id, id);
+
+            UpdateDefinition<CartModel> update =
+            Builders<CartModel>
+            .Update
+            .Set(u => u.ItemQty, qty);
+
+            await _cart_collection
+            .UpdateOneAsync(filter,update);
+
+            return;
+        }
+        #endregion
+
         #region Gets all items
         public async Task<List<ItemModel>> GetAllItemsAsync()
         {

@@ -41,6 +41,8 @@
         }        
     })
 
+
+
     function buildCartDivs(data) {
 
         var body = document.getElementById('cart-id')
@@ -48,29 +50,28 @@
         for (var i = 0; i < data.length; i++) {
 
             var div = `
-                            <div class="items-div" id="items-id">
-                                <div>
-                                    <h2>Items</h2>
-                                    <hr />
-                                    <input id="item-id" value="${data[i].itemName}"/>
-                                </div>
+                                    <div class="items-div" id="items-id">
+                                        <div>
+                                            <h2>Items</h2>
+                                            <hr />
+                                            <input id="item-id" value="${data[i].itemName}"/>
+                                        </div>
 
-                                <div>
-                                    <h2>Qty</h2>
-                                    <hr class="qty-hr"/>
-                                    <input class="qty-id" value="${data[i].itemUnitSize}"/>
-                                </div>
+                                        <div>
+                                            <h2>Qty</h2>
+                                            <hr class="qty-hr"/>
+                                            <input class="qty-id" id="qty-input" value="1"/>
+                                        </div>
 
-                                <div>
-                                    <h2>Price</h2>
-                                    <hr class="qty-hr"/>
-                                    <input class="qty-id" id="price-id" value="$${data[i].itemPrice}"/>
-                                </div>
-                                    <button class="crud-buttons">${data[i].id}</button>
-                                    <button class="crud-buttons">${data[i].id}</button>
-                            </div>`
+                                        <div>
+                                            <h2>Price</h2>
+                                            <hr class="qty-hr"/>
+                                            <input class="qty-id" id="price-id" value="$${data[i].itemPrice}"/>
+                                        </div>
+                                            <button class="minus-button" onclick="decrement()" id="minus-id">${data[i].id}</button>
+                                            <button class="add-button" onclick="increment()" id="plus-id">${data[i].id}</button>
+                                    </div>`
             body.innerHTML += div
         }
     }
-
 </script>

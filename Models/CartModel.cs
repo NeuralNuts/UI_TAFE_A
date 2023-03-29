@@ -21,5 +21,8 @@ namespace UI_TAFE_A.Models
 
         [BsonElement("item_price")]
         public double? ItemPrice { get; set; } = null!;
+
+        [BsonElement("item_qty")]
+        public int? ItemQty { get; set; } = null!;
     }
 }

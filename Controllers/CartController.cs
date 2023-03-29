@@ -5,6 +5,7 @@ using UX_UI_WEB_APP.Services;
 using UI_TAFE_A.Models;
 using System.ComponentModel.DataAnnotations;
 using MongoDB.Driver.Linq;
+using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace UX_UI_WEB_APP.Controllers
 {
@@ -80,6 +81,21 @@ namespace UX_UI_WEB_APP.Controllers
             await _mongodb_services.AddSingleCartItemAsync(cart_model);
 
             return Ok("Item added to cart");
+        }
+        #endregion
+
+        #region Update cart item qty
+        /// <summary>
+        /// Gets all sensor readings [Limited to 100 readings due to swagger not being able to load in more then 5000 records]
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("PutItemQty")]
+        public async Task<IActionResult> PutItemQty(string id, int qty)
+        {
+            await _mongodb_services.UpdateCartQtyAsync(id, qty);
+
+            return Ok("Cart qty updated");
         }
         #endregion
     }
