@@ -165,6 +165,25 @@ input {
     color: #c3c7d5ca;
 }
 
+.update-button {
+    height: 60px;
+    width: 150px;
+    border: solid;
+    border-radius: 10px;
+    background-color: #13172d;
+    color: #c3c7d5ca;
+}
+
+.update-button:hover {
+    font-style: normal;
+    box-shadow: none;
+    border: solid;
+    color: white;
+    border-color: white;
+    border-radius: 10px;
+    border-width: 3px;
+}
+
 .check-out-button:hover {
     font-style: normal;
     box-shadow: none;

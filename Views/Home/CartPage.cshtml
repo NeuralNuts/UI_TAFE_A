@@ -32,14 +32,8 @@
            
             <div>
                 <h2>Qty</h2>
-                <input placeholder="Add qty..." maxlength="1"/>
-            </div>
-
-            <div>
-                <h2>Product</h2>
-                <select id="product-drop-down-box">
-                    
-                </select>
+                <input placeholder="Add qty..." maxlength="1" id="qty-input-id"/>
+                <button class="update-button" id="update-button">Update</button>
             </div>
 
         </div>
@@ -71,22 +65,30 @@
         },
     })
 
-    $.ajax({
-        type: "GET",
-        url: "https://localhost:7034/api/Item/GetAllItems",
-        dataType: "JSON",
-        beforeSend: function () {
-            $('#loader').removeClass('hidden')
-        },
-        success: function (data) {
+    $("#update-button").click(function (event) {
 
-            cart_array = data
-            buildItemNameDropDownBox(cart_array)
-            console.log(cart_array)
-        },
-        complete: function () {
-            $('#loader').addClass('hidden')
-        },
+        var input = document.getElementById('id-input')
+
+        $.ajax({
+            type: "PUT",
+            url: "https://localhost:7034/api/Cart/PutItemQty?" + "id=" +
+                                                             input.value +
+                                                             "&qty=" + 
+                                                             $("#qty-input-id").val(),
+
+            dataType: "JSON",
+            beforeSend: function () {
+                $('#loader').removeClass('hidden')
+            },
+            success: function (data) {
+
+                console.log(data)
+            },
+            complete: function () {
+                $('#loader').addClass('hidden')
+            },
+        })
+        window.location.reload()
     })
 
     function buildCartDivs(data) {
@@ -106,7 +108,7 @@
                                         <div>
                                             <h2>Qty</h2>
                                             <hr class="qty-hr"/>
-                                            <input class="qty-id" id="qty-input" value="1" readonly="readonly"/>
+                                            <input class="qty-id" id="qty-input" value="${data[i].itemQty}" readonly="readonly"/>
                                         </div>
 
                                         <div>
@@ -154,16 +156,6 @@
                     input.value = this.innerHTML
                 }
             }
-        }
-    }
-
-    function buildItemNameDropDownBox(data) {
-
-        var table = document.getElementById('product-drop-down-box')
-        for (var i = 0; i < data.length; i++) {
-
-            var row = `<option>${data[i].itemName}</option>`
-            table.innerHTML += row
         }
     }
 </script>
