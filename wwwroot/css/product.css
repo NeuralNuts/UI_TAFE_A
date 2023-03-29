@@ -45,6 +45,7 @@ h2 {
     background-size: 100px;
     background-color: #13172d;
     width: 103px;
+    font-size: 1px;
     height: 100px;
     margin-left: 24%;
     margin-top: 10px;
@@ -139,7 +140,7 @@ textarea {
     height: 100%;
 }
 
-    .lds-dual-ring:after {
+.lds-dual-ring:after {
         content: " ";
         display: block;
         width: 64px;
@@ -149,7 +150,7 @@ textarea {
         border: 6px solid #fff;
         border-color: #fff transparent #fff transparent;
         animation: lds-dual-ring 1.2s linear infinite;
-    }
+}
 
 @keyframes lds-dual-ring {
     0% {
