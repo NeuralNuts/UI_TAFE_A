@@ -12,7 +12,7 @@
 </head>
 
 <div class="god-div" id="god-div">
-
+    <div id="loader" class="lds-dual-ring hidden overlay"></div>
 </div>
 
 <script>
@@ -23,11 +23,17 @@
         type: "GET",
         url: "https://localhost:7034/api/Item/GetAllItems",
         dataType: "JSON",
+        beforeSend: function () {
+            $('#loader').removeClass('hidden')
+        },
         success: function (response) {
             product_array = response
             buildProductDivs(product_array)
             console.log(product_array)
-        }
+        },
+        complete: function () {
+            $('#loader').addClass('hidden')
+        },
     })
 
     function buildProductDivs(data) {
