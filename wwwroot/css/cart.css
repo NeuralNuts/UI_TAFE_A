@@ -16,14 +16,15 @@
     border-radius: 10px 0px 10px 10px;
     border: solid;
     border-color: #ffffff30;
-    margin-top: 6%;
+    margin-top: 4%;
     width: 41%;
-    height: 85%;
+    height: 86%;
 }
 
 .cart-div {
     position: absolute;
     overflow: auto;
+    height: 86%;
     max-height: 86%;
     border: none;
     border-bottom: solid;
