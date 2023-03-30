@@ -48,6 +48,11 @@ namespace UX_UI_WEB_APP.Controllers
             return View();
         }
 
+        public IActionResult AccountPage()
+        {
+            return View();
+        }
+
         public IActionResult CartPage()
         {
             return View();

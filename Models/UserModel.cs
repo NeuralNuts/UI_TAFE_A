@@ -18,5 +18,8 @@ namespace UX_UI_WEB_APP.Models
 
         [BsonElement("user_role")]
         public string? UserRole { get; set; } = null;
+
+        [BsonElement("user_theme")]
+        public string? UserTheme { get; set; } = null;
     }
 }

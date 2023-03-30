@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "AccountPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/account.css" />
+</head>
+
+<div class="god-div" id="god-div">
+    <div class="account-div">
+        <div>
+            <h2>Email</h2>
+            <br />
+            <input id="email-input"/>
+
+            <h2>Current theme</h2>
+            <br />
+            <input id="theme-input" />
+        </div>
+
+        <div>
+            <select id="theme-select">
+                <option value="Dark Theme">Dark Theme</option>
+                <option value="Sams really cool theme">Sams really cool theme</option>
+            </select>
+            <br />
+            <button class="save-button" id="save-button">Save theme</button>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var email_input = $("#email-input")
+    var theme_input = $("#theme-input")
+    var session_email = sessionStorage.getItem("email_input")
+    var themeSelect = document.getElementById("theme-select")
+
+    email_input.val(session_email)
+
+    $.ajax({
+        type: "GET",
+        url: "https://localhost:7034/api/User/GetSingleUser?" + "email=" +
+                                                                session_email,
+
+        dataType: "JSON",
+        success: function (data) {
+
+            for (var i = 0; i < data.length; i++) {
+
+                theme_input.val(data[i].userTheme)
+            }
+
+            console.log(data)
+        }
+    })
+
+    $("#save-button").click(function (event) {
+
+        $.ajax({
+            type: "PUT",
+            url: "https://localhost:7034/api/User/PutUserTheme?" + "email=" +
+                                                                  email_input.val() +
+                                                                  "&theme=" +
+                                                                  themeSelect.options[themeSelect.selectedIndex].text,
+
+            dataType: "JSON",
+            success: function (data) {
+
+                console.log(data)
+            },
+            error: function (data){
+
+                console.log(data)
+            }
+        })
+        //window.location.reload()
+    })
+</script>

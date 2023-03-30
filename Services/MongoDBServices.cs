@@ -83,18 +83,34 @@ namespace UX_UI_WEB_APP.Services
         #region Updates qty
         public async Task UpdateCartQtyAsync(string id, int qty)
         {
-            FilterDefinition<CartModel> filter =
-            Builders<CartModel>
+            FilterDefinition<CartModel> filter = Builders<CartModel>
             .Filter
             .Eq(u => u.Id, id);
 
-            UpdateDefinition<CartModel> update =
-            Builders<CartModel>
+            UpdateDefinition<CartModel> update = Builders<CartModel>
             .Update
             .Set(u => u.ItemQty, qty);
 
             await _cart_collection
             .UpdateOneAsync(filter,update);
+
+            return;
+        }
+        #endregion
+
+        #region Updates users theme
+        public async Task UpadateUserTheme(string email, string theme)
+        {
+            FilterDefinition<UserModel> filter = Builders<UserModel>
+            .Filter
+            .Eq(u => u.UserEmail, email);
+
+            UpdateDefinition<UserModel> update = Builders<UserModel>
+            .Update
+            .Set(u => u.UserTheme, theme);
+
+             await _user_collection
+            .UpdateOneAsync(filter, update);
 
             return;
         }
@@ -131,6 +147,19 @@ namespace UX_UI_WEB_APP.Services
             .Eq(u => u.Id, id);
 
             return await _item_collection.Find(id_filter).
+            ToListAsync();
+        }
+        #endregion
+
+        #region Gets user based on email
+        public async Task<List<UserModel>> GetSingleUser(string email)
+        {
+            var id_filter =
+            Builders<UserModel>
+            .Filter
+            .Eq(u => u.UserEmail, email);
+
+            return await _user_collection.Find(id_filter).
             ToListAsync();
         }
         #endregion

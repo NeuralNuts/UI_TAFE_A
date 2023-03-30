@@ -33,6 +33,15 @@ namespace UX_UI_WEB_APP.Controllers
         }
         #endregion
 
+        #region Http get all users
+        [HttpGet]
+        [Route("GetSingleUser")]
+        public async Task<List<UserModel>> GetSingleUsers(string email)
+        {
+            return await _mongodb_services.GetSingleUser(email);
+        }
+        #endregion
+
         #region Authenticate user login
         [HttpGet]
         [Route("AuthenticateUserLogin")]
@@ -72,6 +81,21 @@ namespace UX_UI_WEB_APP.Controllers
             await _mongodb_services.PostItemAsync(user_model);
 
             return Ok("Item id added to cart");
+        }
+        #endregion
+
+        #region Update user theme
+        /// <summary>
+        /// Gets all sensor readings [Limited to 100 readings due to swagger not being able to load in more then 5000 records]
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("PutUserTheme")]
+        public async Task<IActionResult> PutUserTheme([FromQuery] string email, string theme)
+        {
+            await _mongodb_services.UpadateUserTheme(email, theme);
+
+            return Ok("Theme updated");
         }
         #endregion
     }
