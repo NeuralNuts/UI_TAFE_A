@@ -2,12 +2,24 @@
     ViewData["Title"] = "_Layout";
 }
 
+@{
+    bool darkTheme = Context.Session != null && Context.Session.GetString("Theme") != null && Context.Session.Keys.Contains("Theme").Equals("Sam");
+}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/site.css" />
+
+    @if (darkTheme)
+    {
+        <link rel="stylesheet" type="text/css" href="/css/SamsTheme.css" id="CssTheme"/>
+    }
+    else
+    {
+        <link rel="stylesheet" type="text/css" href="~/css/site.css" id="CssTheme" />
+    }
 </head>
 
 <body>
@@ -63,7 +75,24 @@
             </li>
         </ul>
     </header>
-    
+
+    <script>
+
+        var storedTheme = sessionStorage.getItem("theme_input")
+        var newTheme = "";
+
+        if (storedTheme === "Sams theme") {
+            newTheme = "Sam"
+            document.getElementById("CssTheme").setAttribute("href", "/css/SamsTheme.css")
+        } else {
+            newTheme = "Dark"
+        }
+
+        localStorage.setItem("Theme", newTheme)
+        console.log(newTheme)
+
+    </script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

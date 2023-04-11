@@ -25,8 +25,8 @@
 
         <div>
             <select id="theme-select">
-                <option value="Dark Theme">Darkk Theme</option>
-                <option value="Sams really cool theme">Sams really cool theme</option>
+                <option value="Dark Theme">Dark Theme</option>
+                <option value="Sams theme">Sams theme</option>
             </select>
             <br />
             <button class="save-button" id="save-button">Save theme</button>
@@ -79,6 +79,7 @@
                 console.log(data)
             }
         })
-        //window.location.reload()
+        sessionStorage.setItem("theme_input", theme_input.val())
+        window.location.reload()
     })
 </script>
