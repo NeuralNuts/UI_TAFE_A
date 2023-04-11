@@ -39,9 +39,35 @@
     var email_input = $("#email-input")
     var theme_input = $("#theme-input")
     var session_email = sessionStorage.getItem("email_input")
+    var session_theme = sessionStorage.getItem("theme_input")
     var themeSelect = document.getElementById("theme-select")
 
+    theme_input.val(session_theme)
     email_input.val(session_email)
+
+    $("#save-button").click(function (event) {
+
+        $.ajax({
+            type: "PUT",
+            url: "https://localhost:7034/api/User/PutUserTheme?" + "email=" +
+                email_input.val() +
+                "&theme=" +
+                themeSelect.options[themeSelect.selectedIndex].text,
+
+            dataType: "JSON",
+            success: function (data) {
+
+                console.log(data)
+            },
+            error: function (data) {
+
+                console.log(data)
+            }
+        })
+
+        window.location.reload()
+        sessionStorage.setItem("theme_input", theme_input.val())
+    })
 
     $.ajax({
         type: "GET",
@@ -58,28 +84,5 @@
 
             console.log(data)
         }
-    })
-
-    $("#save-button").click(function (event) {
-
-        $.ajax({
-            type: "PUT",
-            url: "https://localhost:7034/api/User/PutUserTheme?" + "email=" +
-                                                                  email_input.val() +
-                                                                  "&theme=" +
-                                                                  themeSelect.options[themeSelect.selectedIndex].text,
-
-            dataType: "JSON",
-            success: function (data) {
-
-                console.log(data)
-            },
-            error: function (data){
-
-                console.log(data)
-            }
-        })
-        sessionStorage.setItem("theme_input", theme_input.val())
-        window.location.reload()
     })
 </script>

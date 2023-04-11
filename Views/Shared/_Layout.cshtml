@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "_Layout";
 }
-
 @{
     bool darkTheme = Context.Session != null && Context.Session.GetString("Theme") != null && Context.Session.Keys.Contains("Theme").Equals("Sam");
 }
@@ -9,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    @await RenderSectionAsync("Scripts", required: false)
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -23,6 +23,8 @@
 </head>
 
 <body>
+    
+    
     <header>
         <div class="logo-div">
             <img onclick="window.location.href =
@@ -76,25 +78,26 @@
         </ul>
     </header>
 
-    <script>
-
-        var storedTheme = sessionStorage.getItem("theme_input")
-        var newTheme = "";
-
-        if (storedTheme === "Sams theme") {
-            newTheme = "Sam"
-            document.getElementById("CssTheme").setAttribute("href", "/css/SamsTheme.css")
-        } else {
-            newTheme = "Dark"
-        }
-
-        localStorage.setItem("Theme", newTheme)
-        console.log(newTheme)
-
-    </script>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    
 </body>
+
+<script>
+
+    var storedTheme = sessionStorage.getItem("theme_input")
+    var newTheme = "";
+
+    if (storedTheme === "Sams theme") {
+        newTheme = "Sam"
+        document.getElementById("CssTheme").setAttribute("href", "/css/SamsTheme.css")
+    } else {
+        newTheme = "Dark"
+    }
+
+    localStorage.setItem("Theme", newTheme)
+    console.log(newTheme)
+
+</script>
+
 </html>
 @RenderBody()
