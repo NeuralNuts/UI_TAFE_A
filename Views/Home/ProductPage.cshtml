@@ -24,7 +24,7 @@
         url: "https://localhost:7034/api/Item/GetAllItems",
         dataType: "JSON",
         beforeSend: function () {
-            $('#loader').removeClass('hidden')
+            
         },
         success: function (response) {
             product_array = response
@@ -32,12 +32,13 @@
             console.log(product_array)
         },
         complete: function () {
-            $('#loader').addClass('hidden')
+            
         },
     })
 
     function buildProductDivs(data) {
         var body = document.getElementById('god-div')
+        $('#loader').removeClass('hidden')
 
         for (var i = 0; i < data.length; i++) {
             var div = `
@@ -56,6 +57,7 @@
                                     </div>
                             </div>`
             body.innerHTML += div
+            $('#loader').addClass('hidden')
 
             var id = body.getElementsByClassName('add-button')
 

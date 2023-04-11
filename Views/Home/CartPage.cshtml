@@ -16,9 +16,8 @@
     <div class="parent-cart-div">
 
         <div class="child-cart-div" id="cart-id">
+            <div id="spinner-loader-id" class="lds-dual-ring hidden overlay"></div>
         </div>
-
-        <div id="spinner-loader-id" class="lds-dual-ring hidden overlay"></div>
 
         <br />
         <button class="check-out-button">Check out</button>
@@ -47,25 +46,25 @@
     var cart_array = []
     var item_array = []
 
-    $.ajax({
-        type: "GET",
-        url: "https://localhost:7034/api/Cart/GetUserCartItems?" +
-                                                               "email=" +
-                                                                sessionStorage.getItem("email_input"),
-        dataType: "JSON",
-        beforeSend: function () {
-            $('#spinner-loader-id').removeClass('hidden')
-        },
-        success: function (data) {
+        $.ajax({
+            type: "GET",
+            url: "https://localhost:7034/api/Cart/GetUserCartItems?" +
+                "email=" +
+                sessionStorage.getItem("email_input"),
+            dataType: "JSON",
+            beforeSend: function () {
+                $('#spinner-loader-id').removeClass('hidden')
+            },
+            success: function (data) {
 
-            cart_array = data
-            buildCartDivs(cart_array)
-            console.log(data)
-        },
-        complete: function () {
-            $('#spinner-loader-id').addClass('hidden')
-        },
-    })
+                cart_array = data
+                buildCartDivs(cart_array)
+                console.log(data)
+            },
+            complete: function () {
+                $('#spinner-loader-id').addClass('hidden')
+            },
+        })
 
     $("#update-button").click(function (event) {
 
@@ -96,7 +95,6 @@
     function buildCartDivs(data) {
 
         var body = document.getElementById('cart-id')
-
         for (var i = 0; i < data.length; i++) {
 
             var div = `
@@ -123,6 +121,7 @@
                             <button class="delete-button">${data[i].id}</button>
                         </div>`
             body.innerHTML += div
+            
 
             var id = body.getElementsByClassName('delete-button')
 

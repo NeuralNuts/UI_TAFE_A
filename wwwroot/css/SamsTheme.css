@@ -62,7 +62,7 @@ li {
 button {
     background-color: transparent;
     font-size: 20px;
-    color: #ffffff;
+    color: #007FFF;
     height: 12px;
     text-transform: uppercase;
     border-radius: 0px;
@@ -94,7 +94,7 @@ button:hover {
 }
 
 img {
-    background-color: white;
+    background-color: #007FFF;
     padding: 9px 9px 2px 9px;
     margin-left: -3px;
     width: 40px; 
@@ -152,4 +152,15 @@ img:hover {
 hr {
     width: 25%;
     color: #c3c7d5ca;
+}
+
+.parent-about-div {
+    position: absolute;
+    display: inline-grid;
+    background-color: #007FFF;
+    border-radius: 10px;
+    border: solid;
+    border-color: #ffffff30;
+    margin-top: 6%;
+    width: 98.9%;
 }
