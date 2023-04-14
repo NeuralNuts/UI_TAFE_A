@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "_Layout";
 }
+
 @{
     bool darkTheme = Context.Session != null && Context.Session.GetString("Theme") != null && Context.Session.Keys.Contains("Theme").Equals("Sam");
 }
