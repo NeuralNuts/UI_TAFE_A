@@ -28,10 +28,65 @@ html {
 }
 
 body {
-    background-image: linear-gradient(#00063726, #00063726), url("../images/pexels-ricardo-esquivel-5843172.jpg");
+    background-color: #d9d9d9; 
     background-size: 100%;
     background-position-y: -530px;
     margin-bottom: 60px;
+}
+
+body .parent-cart-div {
+    background-color: #3567c1;
+}
+
+body .parent-about-div {
+    background-color: #3567c1;
+}
+
+body .parent-about-div h2{
+    color: white;
+}
+
+body .parent-edit-div {
+    background-color: #3567c1;
+    color: white
+    
+}
+
+body .items-div h2{
+    color: white;
+
+}
+
+body .parent-edit-div h2{
+    color: white;
+}
+
+body .parent-edit-div button {
+    background-color: #004fb0;
+}
+
+body .parent-cart-div button {
+    background-color: #004fb0;
+}
+
+body .account-div {
+    background-color: #3567c1;
+}
+
+body .account-div select{
+    background-color: #004fb0;
+}
+
+body .account-div button{
+    background-color: #004fb0;
+}
+
+body .parent-product-div {
+    background-color: #3567c1;
+}
+
+body .parent-product-div button {
+        background-color: #004fb0;
 }
 
 header {
@@ -41,7 +96,7 @@ header {
     margin-top: -10px;
     margin-left: -8px;
     margin-bottom: 0px;
-    background-color: #7CB9E8;
+    background-color: #3567c1;
     text-align: center;
     border: solid;
     border-color: #007FFF;
@@ -62,7 +117,7 @@ li {
 button {
     background-color: transparent;
     font-size: 20px;
-    color: #007FFF;
+    color: white;
     height: 12px;
     text-transform: uppercase;
     border-radius: 0px;
@@ -94,7 +149,7 @@ button:hover {
 }
 
 img {
-    background-color: #007FFF;
+    background-color: white;
     padding: 9px 9px 2px 9px;
     margin-left: -3px;
     width: 40px; 
@@ -154,13 +209,3 @@ hr {
     color: #c3c7d5ca;
 }
 
-.parent-about-div {
-    position: absolute;
-    display: inline-grid;
-    background-color: #007FFF;
-    border-radius: 10px;
-    border: solid;
-    border-color: #ffffff30;
-    margin-top: 6%;
-    width: 98.9%;
-}
