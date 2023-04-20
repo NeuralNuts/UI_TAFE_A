@@ -13,6 +13,12 @@
     width: 98.9%;
 }
 
+.file-picker {
+    margin-top: 80px;
+    margin-left: 10px;
+    width: 30vh;
+}
+
 h2 {
     color: #ffffffc4;
     font-family: Arial;

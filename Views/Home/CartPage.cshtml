@@ -21,8 +21,11 @@
         </div>
 
         <br />
-        <button class="check-out-button">Check out</button>
-        <input id="total-price-id" placeholder="Total price" class="total-price-input" value="" />
+        <div>
+            <button class="check-out-button">Check out</button>
+            <h3>Total Price:</h3>
+            <input id="total-price-id" placeholder="Total price" class="total-price-input" value="" />
+        </div>
     </div>
 
     <div class="parent-edit-div" id="edit-page-id">
@@ -61,6 +64,14 @@
                 cart_array = data
                 buildCartDivs(cart_array)
                 console.log(data)
+
+                var cart_array = data;
+                var total = 0;
+                for (var i = 0; i < cart_array.length; i++) {
+                    total += cart_array[i].itemPrice;
+                }
+                console.log('Cart Total:', total);
+                $("#total-price-id").val(`$${total}`)
             },
             complete: function () {
                 $('#spinner-loader-id').addClass('hidden')

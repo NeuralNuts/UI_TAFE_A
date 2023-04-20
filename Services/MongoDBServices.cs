@@ -116,6 +116,24 @@ namespace UX_UI_WEB_APP.Services
         }
         #endregion
 
+        #region Updates users theme
+        public async Task UpadateUserImage(string email, string image)
+        {
+            FilterDefinition<UserModel> filter = Builders<UserModel>
+            .Filter
+            .Eq(u => u.UserEmail, email);
+
+            UpdateDefinition<UserModel> update = Builders<UserModel>
+            .Update
+            .Set(u => u.UserImage, image);
+
+            await _user_collection
+           .UpdateOneAsync(filter, update);
+
+            return;
+        }
+        #endregion
+
         public async Task DeleteCartItemAsync(string id)
         {
             FilterDefinition<CartModel> filter =
@@ -153,6 +171,19 @@ namespace UX_UI_WEB_APP.Services
 
         #region Gets user based on email
         public async Task<List<UserModel>> GetSingleUser(string email)
+        {
+            var id_filter =
+            Builders<UserModel>
+            .Filter
+            .Eq(u => u.UserEmail, email);
+
+            return await _user_collection.Find(id_filter).
+            ToListAsync();
+        }
+        #endregion
+
+        #region Gets user based on email
+        public async Task<List<UserModel>> GetUserImage(string email)
         {
             var id_filter =
             Builders<UserModel>

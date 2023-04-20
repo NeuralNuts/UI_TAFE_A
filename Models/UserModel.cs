@@ -21,5 +21,8 @@ namespace UX_UI_WEB_APP.Models
 
         [BsonElement("user_theme")]
         public string? UserTheme { get; set; } = null;
+
+        [BsonElement("user_image")]
+        public string? UserImage { get; set; } = null;
     }
 }

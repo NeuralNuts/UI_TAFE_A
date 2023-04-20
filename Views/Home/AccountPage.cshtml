@@ -16,11 +16,9 @@
         <div>
             <h2>Email</h2>
             <br />
-            <input id="email-input"/>
+            <input id="email-input" />
 
             <h2>Current theme</h2>
-            <br />
-            <input id="theme-input" />
         </div>
 
         <div>
@@ -30,6 +28,10 @@
             </select>
             <br />
             <button class="save-button" id="save-button">Save theme</button>
+            <br />
+            <input type="file" class="file-picker" id="picker" />
+            <br />
+            <button class="save-button" id="save-image-button">Save image</button>
         </div>
     </div>
 </div>
@@ -41,9 +43,13 @@
     var session_email = sessionStorage.getItem("email_input")
     var session_theme = sessionStorage.getItem("theme_input")
     var themeSelect = document.getElementById("theme-select")
+    var reader = new FileReader()
 
     theme_input.val(session_theme)
     email_input.val(session_email)
+    picker = document.getElementById("picker"),
+
+    picker.onchange = () => reader.readAsBinaryString(picker.files[0]);
 
     $("#save-button").click(function (event) {
 
@@ -64,15 +70,14 @@
                 console.log(data)
             }
         })
-
+        sessionStorage.setItem("theme_input", themeSelect.options[themeSelect.selectedIndex].text)
         window.location.reload()
-        sessionStorage.setItem("theme_input", theme_input.val())
     })
 
     $.ajax({
         type: "GET",
         url: "https://localhost:7034/api/User/GetSingleUser?" + "email=" +
-                                                                session_email,
+            session_email,
 
         dataType: "JSON",
         success: function (data) {
@@ -84,5 +89,29 @@
 
             console.log(data)
         }
+    })
+
+    $("#save-image-button").click(function (event) {
+
+        $.ajax({
+            type: "PUT",
+            url: "https://localhost:7034/api/User/PutUserImage?" + "email=" +
+                email_input.val() +
+                "&image=" +
+                reader.result,
+
+            dataType: "JSON",
+            success: function (data) {
+
+                console.log(data)
+            },
+            error: function (data) {
+
+                console.log(data)
+            }
+        })
+
+        //window.location.reload()
+        sessionStorage.setItem("theme_input", theme_input.val())
     })
 </script>
