@@ -243,11 +243,11 @@ input {
 
 /*Add an overlay to the entire page blocking any further presses to buttons or other elements.*/
 .overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: rgba(0,0,0,.8);
     z-index: 999;
     opacity: 1;
@@ -256,7 +256,7 @@ input {
 
 /*Spinner Styles*/
 .lds-dual-ring {
-    display: inline-block;
+    display: block;
     padding-top: 15%;
     width: 100%;
     height: 100%;

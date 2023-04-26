@@ -58,6 +58,13 @@ namespace UX_UI_WEB_APP.Controllers
             return View();
         }
 
+        [Route("CartTable")]
+        [HttpGet]
+        public async Task<IActionResult> CartTable()
+        {
+            return PartialView("_CartPage");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

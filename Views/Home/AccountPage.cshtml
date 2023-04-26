@@ -28,10 +28,6 @@
             </select>
             <br />
             <button class="save-button" id="save-button">Save theme</button>
-            <br />
-            <input type="file" class="file-picker" id="picker" />
-            <br />
-            <button class="save-button" id="save-image-button">Save image</button>
         </div>
     </div>
 </div>
@@ -47,9 +43,6 @@
 
     theme_input.val(session_theme)
     email_input.val(session_email)
-    picker = document.getElementById("picker"),
-
-    picker.onchange = () => reader.readAsBinaryString(picker.files[0]);
 
     $("#save-button").click(function (event) {
 

@@ -1,0 +1,27 @@
+﻿@{
+    //ViewData["Title"] = "_CartPage";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/css/cart.css" />
+</head>
+<div class="parent-cart-div" id="parent-cart-id">
+
+    <div class="child-cart-div" id="cart-id">
+        <div id="spinner-loader-id" class="lds-dual-ring hidden overlay"></div>
+    </div>
+
+    <br />
+    <div>
+        <button class="check-out-button" onclick="UpdateCartTable()">Check out</button>
+        <h3>Total Price:</h3>
+        <input id="total-price-id" placeholder="Total price" class="total-price-input" value="" />
+    </div>
+</div>
+
+<script>
+    
+</script>

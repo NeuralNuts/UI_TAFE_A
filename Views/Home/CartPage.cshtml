@@ -12,20 +12,9 @@
     <link rel="stylesheet" type="text/css" href="/css/cart.css" />
 </head>
 
-<div class="god-div">
-
-    <div class="parent-cart-div">
-
-        <div class="child-cart-div" id="cart-id">
-            <div id="spinner-loader-id" class="lds-dual-ring hidden overlay"></div>
-        </div>
-
-        <br />
-        <div>
-            <button class="check-out-button">Check out</button>
-            <h3>Total Price:</h3>
-            <input id="total-price-id" placeholder="Total price" class="total-price-input" value="" />
-        </div>
+<div class="god-div" id="god-div">
+    <div id="render-cart">
+        <partial name="_CartPage.cshtml" />
     </div>
 
     <div class="parent-edit-div" id="edit-page-id">
@@ -47,9 +36,21 @@
 
 <script>
 
-    var cart_array = []
-    var item_array = []
+    async function UpdateCartTable() {
 
+        var result = await fetch("https://localhost:7034/CartTable")
+        var htmlResult = await result.text()
+
+        document.getElementById("render-cart").innerHTML = htmlResult;
+
+        //var div = document.getElementById("parent-cart-id");
+
+        //div.addEventListener('load', (e) => {
+        //    e.preventDefault();
+        //    console.log(e)
+        //})
+
+        
         $.ajax({
             type: "GET",
             url: "https://localhost:7034/api/Cart/GetUserCartItems?" +
@@ -77,32 +78,38 @@
                 $('#spinner-loader-id').addClass('hidden')
             },
         })
+    }
 
-    $("#update-button").click(function (event) {
+    $.ajax({
+        type: "GET",
+        url: "https://localhost:7034/api/Cart/GetUserCartItems?" +
+            "email=" +
+            sessionStorage.getItem("email_input"),
+        dataType: "JSON",
+        beforeSend: function () {
+            $('#spinner-loader-id').removeClass('hidden')
+        },
+        success: function (data) {
 
-        var input = document.getElementById('edit-id')
+            cart_array = data
+            buildCartDivs(cart_array)
+            console.log(data)
 
-        $.ajax({
-            type: "PUT",
-            url: "https://localhost:7034/api/Cart/PutItemQty?" + "id=" +
-                                                             input.value +
-                                                             "&qty=" + 
-                                                             $("#qty-input-id").val(),
-
-            dataType: "JSON",
-            beforeSend: function () {
-                $('#spinner-loader-id').removeClass('hidden')
-            },
-            success: function (data) {
-
-                console.log(data)
-            },
-            complete: function () {
-                $('#spinner-loader-id').addClass('hidden')
-            },
-        })
-        window.location.reload()
+            var cart_array = data;
+            var total = 0;
+            for (var i = 0; i < cart_array.length; i++) {
+                total += cart_array[i].itemPrice;
+            }
+            console.log('Cart Total:', total);
+            $("#total-price-id").val(`$${total}`)
+        },
+        complete: function () {
+            $('#spinner-loader-id').addClass('hidden')
+        },
     })
+
+    var cart_array = []
+    var item_array = []
 
     function buildCartDivs(data) {
 
@@ -110,30 +117,30 @@
         for (var i = 0; i < data.length; i++) {
 
             var div = `
-                        <div class="items-div" id="items-id">
-                            <div>
-                                <h2>Items</h2>
-                                <hr />
-                                <input id="item-id" value="${data[i].itemName}" readonly="readonly"/>
-                            </div>
+                                <div class="items-div" id="items-id">
+                                    <div>
+                                        <h2>Items</h2>
+                                        <hr />
+                                        <input id="item-id" value="${data[i].itemName}" readonly="readonly"/>
+                                    </div>
 
-                            <div>
-                                <h2>Qty</h2>
-                                <hr class="qty-hr"/>
-                                <input class="qty-id" id="qty-input" value="${data[i].itemQty}" readonly="readonly"/>
-                            </div>
+                                    <div>
+                                        <h2>Qty</h2>
+                                        <hr class="qty-hr"/>
+                                        <input class="qty-id" id="qty-input" value="${data[i].itemQty}" readonly="readonly"/>
+                                    </div>
 
-                            <div>
-                                <h2>Price</h2>
-                                <hr class="qty-hr"/>
-                                <input class="qty-id" id="price-id" value="$${data[i].itemPrice}" readonly="readonly"/>
-                            </div>
+                                    <div>
+                                        <h2>Price</h2>
+                                        <hr class="qty-hr"/>
+                                        <input class="qty-id" id="price-id" value="$${data[i].itemPrice}" readonly="readonly"/>
+                                    </div>
 
-                            <button class="edit-button">${data[i].id}</button>
-                            <button class="delete-button">${data[i].id}</button>
-                        </div>`
+                                    <button class="edit-button">${data[i].id}</button>
+                                    <button class="delete-button">${data[i].id}</button>
+                                </div>`
             body.innerHTML += div
-            
+
 
             var id = body.getElementsByClassName('delete-button')
 
@@ -151,11 +158,12 @@
                             dataType: "JSON",
                             success: function (data) {
 
-                                
+
                                 console.log(data)
+                                UpdateCartTable();
                             }
                         })
-                        window.location.reload()
+                        UpdateCartTable();
                     }
                 }
             };
@@ -172,4 +180,30 @@
             }
         }
     }
+
+    $("#update-button").click(function (event) {
+
+        var input = document.getElementById('edit-id')
+
+        $.ajax({
+            type: "PUT",
+            url: "https://localhost:7034/api/Cart/PutItemQty?" + "id=" +
+                input.value +
+                "&qty=" +
+                $("#qty-input-id").val(),
+
+            dataType: "JSON",
+            beforeSend: function () {
+                $('#spinner-loader-id').removeClass('hidden')
+            },
+            success: function (data) {
+
+                console.log(data)
+            },
+            complete: function () {
+                $('#spinner-loader-id').addClass('hidden')
+            },
+        })
+        UpdateCartTable();
+    })
 </script>
