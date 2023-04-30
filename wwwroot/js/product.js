@@ -18,12 +18,24 @@ function searchTable() {
 
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
+        td = tr[i].getElementsByTagName("td")[0];
+        td_2 = tr[i].getElementsByTagName("td")[2];
+
         if (td) {
-            txt_value = td.textContent || td.innerText;
-            if (txt_value.toUpperCase().indexOf(filter) > -1) {
+            txtValue = td.textContent || td.innerText || td.innerHTML || td_2.textContent || td_2.innerText || td_2.innerHTML
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
-            } else {
+            }
+            else if (td_2) {
+                txtValue_2 = td_2.textContent || td_2.innerText || td_2.innerHTML
+                if (txtValue_2.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+
+                    var a = tr[i].style.display = "none"
+                }
+            }
+            else {
                 tr[i].style.display = "none";
             }
         }
@@ -98,7 +110,7 @@ function buildProductDivs(data) {
                                     success: function (response) {
                                         console.log(response);
                                     },
-                                    complete: function() {
+                                    complete: function () {
                                         showCorrectToast()
                                     }
                                 })
