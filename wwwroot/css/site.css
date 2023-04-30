@@ -102,6 +102,17 @@ body {
     border-color: #eeeeee;
 }
 
+.parent-cart-div {
+    background-color: #ffffff;
+    overflow: auto;
+    height: 85vh;
+    max-height: 50vh;
+    border: solid;
+    border-width: 0px 2px 2px 2px;
+    border-radius: 0px 0px 10px 10px;
+    border-color: #eeeeee;
+}
+
 .child-product-div {
     margin-left: 10px;
 }
@@ -344,7 +355,7 @@ video {
     color: #6170F7;
     background-color: #f7e861;
     font-weight: 500;
-    width: 120px;
+    width: 125px;
     height: 54px;
     border: solid;
     border-color: #c3c7d5ca;

@@ -8,8 +8,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SAMS_WAREHOUSE_TAFE</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />   
     <link rel="stylesheet" href="~/UI_TAFE_A.styles.css" asp-append-version="true" />
 
     @if (darkTheme)
@@ -34,7 +34,6 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            @*<a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>*@
                             <button class="btn" onclick="window.location.href =
                                                 '@Url.Action("homePage", "Home")'">
                                 Home
@@ -42,7 +41,6 @@
                         </li>
 
                         <li class="nav-item">
-                            @*<a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Products</a>*@
                             <button class="btn" onclick="window.location.href =
                                                 '@Url.Action("AboutPage", "Home")'">
                                 About
@@ -50,7 +48,6 @@
                         </li>
 
                         <li class="nav-item">
-                            @*<a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Cart</a>*@
                             <button class="btn" onclick="window.location.href =
                                                 '@Url.Action("ProductPage", "Home")'">
                                 Products
@@ -58,7 +55,6 @@
                         </li>
 
                         <li class="nav-item">
-                            @* <a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Account</a>*@
                             <button class="btn" onclick="window.location.href =
                                                 '@Url.Action("CartPage", "Home")'">
                                 Cart
@@ -66,8 +62,8 @@
                         </li>
 
                         <li class="nav-item">
-                            @*<a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Solar Sam</a>*@
-                            <button class="btn">
+                            <button class="btn" onclick="window.location.href =
+                                                '@Url.Action("AccountPage", "Home")'">
                                 Account
                             </button>
                         </li>
@@ -93,19 +89,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/product.js" asp-append-version="true"></script>
     <script src="~/js/cart.js" asp-append-version="true"></script>
+    <script src="~/js/account.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
-<script>
-    var storedTheme = sessionStorage.getItem("theme_input")
-    var newTheme = "";
-    if (storedTheme === "Sams theme") {
-        newTheme = "Sam"
-        document.getElementById("CssTheme").setAttribute("href", "/css/SamsTheme.css")
-    } else {
-        newTheme = "Dark"
-    }
-    localStorage.setItem("Theme", newTheme)
-    console.log(newTheme)
-</script>
 </html>

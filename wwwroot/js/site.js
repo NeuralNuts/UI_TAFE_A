@@ -1,4 +1,14 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿var storedTheme = sessionStorage.getItem("theme_input")
+var newTheme = "";
+if (storedTheme === "Sams theme") {
+    newTheme = "Sam"
+    document.getElementById("CssTheme").setAttribute("href", "/css/SamsTheme.css")
+}
+else if (storedTheme != "Sams theme") {
+    newTheme = "Dark"
+}
+else {
+    newTheme = ""
+}
+localStorage.setItem("Theme", newTheme)
+console.log(newTheme)

@@ -1,110 +1,26 @@
 ﻿@{
-    ViewData["Title"] = "AccountPage";
+    //ViewData["Title"] = "AccountPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/account.css" />
-</head>
-
-<div class="god-div" id="god-div">
-    <div class="account-div">
-        <div>
-            <h2>Email</h2>
-            <br />
-            <input id="email-input" />
-
-            <h2>Current theme</h2>
+<body class="body-2">
+    <div class="container">
+        <label>Email:</label>
+        <div class="input-group mb-2 mt-3">
+            <input type="text" class="form-control" id="email-input"
+                   aria-label="Recipient's username" aria-describedby="basic-addon1">
         </div>
 
-        <div>
+        <label>Current Theme:</label>
+        <div class="input-group mb-2 mt-3">
             <select id="theme-select">
                 <option value="Dark Theme">Dark Theme</option>
                 <option value="Sams theme">Sams theme</option>
             </select>
-            <br />
-            <button class="save-button" id="save-button">Save theme</button>
+
+            <div class="input-group-append">
+                <button class="search-btn" id="save-button">Save theme</button>
+            </div>
         </div>
     </div>
-</div>
-
-<script>
-
-    var email_input = $("#email-input")
-    var theme_input = $("#theme-input")
-    var session_email = sessionStorage.getItem("email_input")
-    var session_theme = sessionStorage.getItem("theme_input")
-    var themeSelect = document.getElementById("theme-select")
-    var reader = new FileReader()
-
-    theme_input.val(session_theme)
-    email_input.val(session_email)
-
-    $("#save-button").click(function (event) {
-
-        $.ajax({
-            type: "PUT",
-            url: "https://localhost:7034/api/User/PutUserTheme?" + "email=" +
-                email_input.val() +
-                "&theme=" +
-                themeSelect.options[themeSelect.selectedIndex].text,
-
-            dataType: "JSON",
-            success: function (data) {
-
-                console.log(data)
-            },
-            error: function (data) {
-
-                console.log(data)
-            }
-        })
-        sessionStorage.setItem("theme_input", themeSelect.options[themeSelect.selectedIndex].text)
-        window.location.reload()
-    })
-
-    $.ajax({
-        type: "GET",
-        url: "https://localhost:7034/api/User/GetSingleUser?" + "email=" +
-            session_email,
-
-        dataType: "JSON",
-        success: function (data) {
-
-            for (var i = 0; i < data.length; i++) {
-
-                theme_input.val(data[i].userTheme)
-            }
-
-            console.log(data)
-        }
-    })
-
-    $("#save-image-button").click(function (event) {
-
-        $.ajax({
-            type: "PUT",
-            url: "https://localhost:7034/api/User/PutUserImage?" + "email=" +
-                email_input.val() +
-                "&image=" +
-                reader.result,
-
-            dataType: "JSON",
-            success: function (data) {
-
-                console.log(data)
-            },
-            error: function (data) {
-
-                console.log(data)
-            }
-        })
-
-        //window.location.reload()
-        sessionStorage.setItem("theme_input", theme_input.val())
-    })
-</script>
+</body>

@@ -3,34 +3,6 @@
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container" id="parent-cart-id">
-    <div class="container">
-        <label>Total Price:</label>
-        <div class="input-group mb-2 mt-3">
-            <input type="text" class="form-control" id="total-price-id"
-                   aria-label="Recipient's username" aria-describedby="basic-addon1">
-            <div class="input-group-append">
-                <button class="search-btn" onclick="UpdateCartTable()">Check out</button>
-            </div>
-        </div>
-
-        <label>Edit div:</label>
-        <div class="input-group mb-2 mt-3">
-            <input type="text" class="form-control" id="edit-id"
-                   aria-label="Recipient's username" aria-describedby="basic-addon1">
-        </div>
-
-        <label>Qty:</label>
-        <div class="input-group mb-2 mt-3">
-            <input type="text" class="form-control" maxlength="1" id="qty-input-id"
-                   aria-label="Recipient's username" aria-describedby="basic-addon1">
-            <div class="input-group-append">
-                <button class="search-btn" id="update-button">Update</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <table class="headings">
     <th scope="col">Name</th>
     <th scope="col">Qty</th>
@@ -61,7 +33,7 @@
     <th scope="col"></th>
 </table>
 
-<div class="parent-product-div">
+<div class="parent-cart-div">
     <div class="child-product-div">
         <table>
             <tbody id="cart-id">
@@ -69,4 +41,30 @@
         </table>
     </div>
 </div>
+<div class="container" id="parent-cart-id">
+    <div class="container">
+        <label>Total Price:</label>
+        <div class="input-group mb-2 mt-3">
+            <input type="text" class="form-control" id="total-price-id"
+                   aria-label="Recipient's username" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <button class="search-btn" onclick="UpdateCartTable()">Check out</button>
+            </div>
+        </div>
+
+        <label>Edit div:</label>
+        <div class="input-group mb-2 mt-3">
+            <input type="text" class="form-control" id="edit-id"
+                   aria-label="Recipient's username" aria-describedby="basic-addon1">
+        </div>
+
+        <label>Qty:</label>
+        <div class="input-group mb-2 mt-3">
+            <input type="text" class="form-control" maxlength="1" id="qty-input-id"
+                   aria-label="Recipient's username" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <button class="search-btn" id="update-button">Update</button>
+            </div>
+        </div>
+    </div>
 </div>
