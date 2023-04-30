@@ -1,6 +1,13 @@
 const searchInput = document.getElementById("search-input")
 var product_array = []
 
+function showCorrectToast() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
 function searchTable() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
@@ -50,7 +57,7 @@ function buildProductDivs(data) {
                                    <td>${data[i].itemDescription}</td>
                                    <td>${data[i].itemUnitSize}</td>
                                    <td class="price-td">${data[i].itemPrice}$</td>
-                                   <td><button class="add-button" id="add-to-list" >${data[i].id}</button></td>
+                                   <td><button class="add-button" id="add-to-list">${data[i].id}</button></td>
                                </tr>`
         body.innerHTML += div
         $('#loader').addClass('hidden')
@@ -89,8 +96,10 @@ function buildProductDivs(data) {
                                         1,
                                     dataType: "JSON",
                                     success: function (response) {
-
-                                        console.log(response)
+                                        console.log(response);
+                                    },
+                                    complete: function() {
+                                        showCorrectToast()
                                     }
                                 })
                             }

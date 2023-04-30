@@ -22,6 +22,51 @@ header {
     background-color: #f7e861;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #c3c7d5ca;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #f7e861;
+    border: solid;
+    border-width: 1px;
+    border-color: #c3c7d5ca;
+}
+
+
+#snackbar {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px;
+    background-color: #38960d;
+    color: #fff; 
+    text-align: center; 
+    border-radius: 2px; 
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%; 
+    bottom: 30px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    border-color: #6170f791;
+    background-color: #6170f77a;
+}
+
 .btn {
     font-family: Arial;
     font-weight: 500;
@@ -29,6 +74,7 @@ header {
     color: #6170F7;
     text-transform: uppercase;
 }
+
 html {
     position: relative;
     min-height: 100%;
@@ -58,7 +104,6 @@ body {
 
 .child-product-div {
     margin-left: 10px;
-
 }
 
 table {
@@ -90,7 +135,6 @@ tr {
 }
 
 th {
-    
 }
 
 td {
@@ -145,10 +189,10 @@ nav {
     border-width: 2px;
 }
 
-.add-button:hover {
-    border-color: #6170f791;
-    background-color: #6170f77a;
-}
+    .add-button:hover {
+        border-color: #6170f791;
+        background-color: #6170f77a;
+    }
 
 video {
     width: 100vw;
@@ -176,24 +220,24 @@ video {
     border: none;
 }
 
-    .cta:focus {
-        outline: none;
-    }
+.cta:focus {
+    outline: none;
+}
 
-    .cta:hover {
-        transition: 0.5s;
-        box-shadow: 10px 10px 0 #F8E43A;
-    }
+.cta:hover {
+    transition: 0.5s;
+    box-shadow: 10px 10px 0 #F8E43A;
+}
 
-    .cta .second {
-        transition: 0.5s;
-        margin-right: 0px;
-    }
+.cta .second {
+    transition: 0.5s;
+    margin-right: 0px;
+}
 
-    .cta:hover .second {
-        transition: 0.5s;
-        margin-right: 45px;
-    }
+.cta:hover .second {
+    transition: 0.5s;
+    margin-right: 45px;
+}
 
 .span {
     transform: skewX(15deg)
@@ -259,4 +303,52 @@ video {
 .search-btn:hover {
     border-color: #6170f791;
     background-color: #6170f77a;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
