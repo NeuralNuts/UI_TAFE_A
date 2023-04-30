@@ -19,7 +19,7 @@
 }
 
 header {
-    background-color: #3D71C2;
+    background-color: #1992a8;
 }
 
 ::-webkit-scrollbar {
@@ -33,7 +33,7 @@ header {
 
 
 ::-webkit-scrollbar-thumb {
-    background: #f7e861;
+    background: #1992a8;
     border: solid;
     border-width: 1px;
     border-color: #c3c7d5ca;
@@ -71,7 +71,7 @@ header {
     font-family: Arial;
     font-weight: 500;
     font-size: 20px;
-    color: #C28E3D;
+    color: whitesmoke;
     text-transform: uppercase;
 }
 
@@ -158,7 +158,7 @@ td {
 }
 
 h1 {
-    color: #f7e861;
+    color: #72f1ed;
     text-transform: uppercase;
 }
 
@@ -199,7 +199,7 @@ video {
 .add-button {
     background-image: url("/images/add-to-cart.png");
     background-size: 50px;
-    background-color: #f7e861;
+    background-color: #1992a8;
     width: 54px;
     font-size: 1px;
     margin-right: 10px;
@@ -212,14 +212,14 @@ video {
 }
 
     .add-button:hover {
-        border-color: #6170f791;
-        background-color: #6170f77a;
+        border-color: #6dd0e2;
+        background-color: #13dbff;
     }
 
 .edit-button {
     background-image: url("/images/edit.png");
     background-size: 50px;
-    background-color: #f7e861;
+    background-color: #1992a8;
     width: 54px;
     font-size: 1px;
     /*margin-right: 10px;*/
@@ -232,14 +232,14 @@ video {
 }
 
     .edit-button:hover {
-        border-color: #6170f791;
-        background-color: #6170f77a;
+        border-color: #6dd0e2;
+        background-color: #13dbff;
     }
 
 .delete-button {
     background-image: url("/images/bin.png");
     background-size: 50px;
-    background-color: #f7e861;
+    background-color: #1992a8;
     width: 54px;
     font-size: 1px;
     /*margin-right: 10px;*/
@@ -252,8 +252,8 @@ video {
 }
 
     .delete-button:hover {
-        border-color: #6170f791;
-        background-color: #6170f77a;
+        border-color: #6dd0e2;
+        background-color: #13dbff;
     }
 
 video {
@@ -274,8 +274,8 @@ video {
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
-    color: #6170F7;
-    background: #f7e861;
+    color: #1992a8;
+    background: #77d4e5;
     transition: 1s;
     box-shadow: 6px 6px 0 #3990b0f2;
     transform: skewX(-15deg);
@@ -288,7 +288,7 @@ video {
 
     .cta:hover {
         transition: 0.5s;
-        box-shadow: 10px 10px 0 #F8E43A;
+        box-shadow: 10px 10px 0 #13dbff;
     }
 
     .cta .second {
@@ -342,7 +342,7 @@ video {
     }
 
     50% {
-        fill: #6170F7;
+        fill: #00fff7;
     }
 
     100% {
@@ -352,8 +352,8 @@ video {
 
 .search-btn {
     font-size: 20px;
-    color: #6170F7;
-    background-color: #f7e861;
+    color: whitesmoke;
+    background-color: #1992a8;
     font-weight: 500;
     width: 125px;
     height: 54px;
@@ -368,8 +368,8 @@ video {
 }
 
 .search-btn:hover {
-    border-color: #6170f791;
-    background-color: #6170f77a;
+    border-color: #6dd0e2;
+    background-color: #13dbff;
     color: whitesmoke;
 }
 
