@@ -1,104 +1,109 @@
 ﻿@{
-    //ViewData["Title"] = "_Layout";
-}
-
-@{
     bool darkTheme = Context.Session != null && Context.Session.GetString("Theme") != null && Context.Session.Keys.Contains("Theme").Equals("Sam");
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    @await RenderSectionAsync("Scripts", required: false)
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SAMS_WAREHOUSE_TAFE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/UI_TAFE_A.styles.css" asp-append-version="true" />
 
     @if (darkTheme)
     {
-        <link rel="stylesheet" type="text/css" href="/css/SamsTheme.css" id="CssTheme"/>
+        <link rel="stylesheet" type="text/css" href="/css/SamsTheme.css" id="CssTheme" />
     }
     else
     {
         <link rel="stylesheet" type="text/css" href="/css/site.css" id="CssTheme" />
     }
-
 </head>
 
 <body>
-    
-    
     <header>
-        <div class="logo-div">
-            <img onclick="window.location.href =
-                        '@Url.Action("Index", "Home")'" 
-                 src="~/images/Sams Warehouse Shopping Cart.svg" />
-        </div> 
-
-        <ul class="nav-bar">
-            <li>
-                <button onclick=
-                        "window.location.href = 
-                        '@Url.Action("HomePage", "Home")'">Home
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="/images/Sams Warehouse Shopping Cart.svg" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-            </li>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            @*<a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>*@
+                            <button class="btn" onclick="window.location.href =
+                                                '@Url.Action("homePage", "Home")'">
+                                Home
+                            </button>
+                        </li>
 
-            <li>
-                <button onclick=
-                        "window.location.href = 
-                        '@Url.Action("AboutPage", "Home")'">About
-                </button>
-            </li>
+                        <li class="nav-item">
+                            @*<a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Products</a>*@
+                            <button class="btn" onclick="window.location.href =
+                                                '@Url.Action("AboutPage", "Home")'">
+                                About
+                            </button>
+                        </li>
 
-            <li>
-                <button onclick="window.location.href =
-                        '@Url.Action("ProductPage", "Home")'">
-                    Products
-                </button>
-            </li>
+                        <li class="nav-item">
+                            @*<a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Cart</a>*@
+                            <button class="btn" onclick="window.location.href =
+                                                '@Url.Action("ProductPage", "Home")'">
+                                Products
+                            </button>
+                        </li>
 
-            <li>
-                <button onclick=
-                        "window.location.href = 
-                        '@Url.Action("PyramidChain", "Home")'">Solar-Sam
-                </button>
-            </li>
+                        <li class="nav-item">
+                            @* <a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Account</a>*@
+                            <button class="btn">
+                                Cart
+                            </button>
+                        </li>
 
-            <li>
-                <button onclick=
-                        "window.location.href = 
-                        '@Url.Action("CartPage", "Home")'">Cart
-                </button>
-            </li>
-
-            <li>
-                <button onclick=
-                        "window.location.href = 
-                        '@Url.Action("AccountPage", "Home")'">Account
-
-                </button>
-            </li>
-        </ul>
+                        <li class="nav-item">
+                            @*<a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Solar Sam</a>*@
+                            <button class="btn">
+                                Account
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+    <div class="container">
+    &copy; 2023 - Sams Warehouse - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+    </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/product.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 <script>
-
     var storedTheme = sessionStorage.getItem("theme_input")
     var newTheme = "";
-
     if (storedTheme === "Sams theme") {
         newTheme = "Sam"
         document.getElementById("CssTheme").setAttribute("href", "/css/SamsTheme.css")
     } else {
         newTheme = "Dark"
     }
-
     localStorage.setItem("Theme", newTheme)
     console.log(newTheme)
-
 </script>
 </html>
-@RenderBody()
