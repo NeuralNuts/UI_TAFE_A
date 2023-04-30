@@ -50,19 +50,27 @@ body {
     background-color: #ffffff;
     overflow: auto;
     height: 85vh;
-    max-height: 85vh;
+    max-height: 76vh;
     border: solid;
-    border-radius: 10px;
+    border-width: 0px 2px 2px 2px;
+    border-radius: 0px 0px 10px 10px;
     border-color: #eeeeee;
 }
 
 .child-product-div {
     margin-left: 10px;
+
 }
 
 table {
     /*background-color: aliceblue;*/
     width: 100%;
+    text-align: left;
+}
+
+.headings {
+    width: 100%;
+    text-align: center;
 }
 
 thead {
@@ -80,6 +88,10 @@ tr {
     border-top: none;
     border-left: none;
     border-right: none;
+}
+
+th {
+    
 }
 
 td {
