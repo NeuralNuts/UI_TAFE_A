@@ -1,6 +1,23 @@
 const searchInput = document.getElementById("search-input")
 var product_array = []
 
+$.ajax({
+    type: "GET",
+    url: "https://localhost:7034/api/Item/GetAllItems",
+    dataType: "JSON",
+    beforeSend: function () {
+
+    },
+    success: function (response) {
+        product_array = response
+        buildProductDivs(product_array)
+        console.log(product_array)
+    },
+    complete: function () {
+
+    }
+})
+
 function showCorrectToast() {
     var x = document.getElementById("snackbar");
     x.className = "show";
@@ -9,14 +26,12 @@ function showCorrectToast() {
 }
 
 function searchTable() {
-    // Declare variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("search-input");
     filter = input.value.toUpperCase();
     table = document.getElementById("my-table");
     tr = table.getElementsByTagName("tr");
 
-    // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[0];
         td_2 = tr[i].getElementsByTagName("td")[2];
@@ -42,25 +57,8 @@ function searchTable() {
     }
 }
 
-$.ajax({
-    type: "GET",
-    url: "https://localhost:7034/api/Item/GetAllItems",
-    dataType: "JSON",
-    beforeSend: function () {
-
-    },
-    success: function (response) {
-        product_array = response
-        buildProductDivs(product_array)
-        console.log(product_array)
-    },
-    complete: function () {
-
-    }
-})
-
 function buildProductDivs(data) {
-    var body = document.getElementById('my-table')
+    let body = document.getElementById('my-table')
     $('#loader').removeClass('hidden')
 
     for (var i = 0; i < data.length; i++) {

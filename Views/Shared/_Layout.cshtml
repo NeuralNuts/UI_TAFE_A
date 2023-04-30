@@ -59,7 +59,8 @@
 
                         <li class="nav-item">
                             @* <a class="nav-link" style="color: white;" asp-area="" asp-controller="Home" asp-action="Privacy">Account</a>*@
-                            <button class="btn">
+                            <button class="btn" onclick="window.location.href =
+                                                '@Url.Action("CartPage", "Home")'">
                                 Cart
                             </button>
                         </li>
@@ -91,6 +92,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/product.js" asp-append-version="true"></script>
+    <script src="~/js/cart.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

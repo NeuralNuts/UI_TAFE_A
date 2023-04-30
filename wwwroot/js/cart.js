@@ -1,0 +1,153 @@
+async function UpdateCartTable() {
+
+    var result = await fetch("https://localhost:7034/CartTable")
+    var htmlResult = await result.text()
+
+    document.getElementById("render-cart").innerHTML = htmlResult;
+
+    //var div = document.getElementById("parent-cart-id");
+
+    //div.addEventListener('load', (e) => {
+    //    e.preventDefault();
+    //    console.log(e)
+    //})
+
+    $.ajax({
+        type: "GET",
+        url: "https://localhost:7034/api/Cart/GetUserCartItems?" +
+            "email=" +
+            sessionStorage.getItem("email_input"),
+        dataType: "JSON",
+        beforeSend: function () {
+            $('#spinner-loader-id').removeClass('hidden')
+        },
+        success: function (data) {
+
+            cart_array = data
+            buildCartDivs(cart_array)
+            console.log(data)
+
+            var cart_array = data;
+            var total = 0;
+            for (var i = 0; i < cart_array.length; i++) {
+                total += cart_array[i].itemPrice;
+            }
+            console.log('Cart Total:', total);
+            $("#total-price-id").val(`$${total}`)
+        },
+        complete: function () {
+            $('#spinner-loader-id').addClass('hidden')
+        },
+    })
+}
+
+$.ajax({
+    type: "GET",
+    url: "https://localhost:7034/api/Cart/GetUserCartItems?" +
+        "email=" +
+        sessionStorage.getItem("email_input"),
+    dataType: "JSON",
+    beforeSend: function () {
+        $('#spinner-loader-id').removeClass('hidden')
+    },
+    success: function (data) {
+
+        cart_array = data
+        buildCartDivs(cart_array)
+        console.log(data)
+
+        var cart_array = data;
+        var total = 0;
+        for (var i = 0; i < cart_array.length; i++) {
+            total += cart_array[i].itemPrice;
+        }
+        console.log('Cart Total:', total);
+        $("#total-price-id").val(`$${total}`)
+    },
+    complete: function () {
+        $('#spinner-loader-id').addClass('hidden')
+    },
+})
+
+var cart_array = []
+var item_array = []
+
+function buildCartDivs(data) {
+
+    let body = document.getElementById('cart-id')
+    for (var i = 0; i < data.length; i++) {
+
+        var div = `<tr class="tr-data">
+                                   <td id="item-id">${data[i].itemName}</td>
+                                   <td id="qty-input">${data[i].itemQty}</td>
+                                   <td class="price-td" id="price-id">${data[i].itemPrice}$</td>
+                                   <td><button class="edit-button">${data[i].id}</button></td>
+                                   <td><button class="delete-button">${data[i].id}</button></td>
+                               </tr>`
+
+        body.innerHTML += div
+
+        var id = body.getElementsByClassName('delete-button')
+
+        for (var i = 0, len = id.length; i < len; i++) {
+            for (var j = 0, len = id.length; j < len; j++) {
+
+                id[j].onclick = function () {
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: "https://localhost:7034/api/Cart/DeleteItem?" +
+                            "id=" +
+                            this.innerHTML,
+
+                        dataType: "JSON",
+                        success: function (data) {
+
+
+                            console.log(data)
+                            UpdateCartTable();
+                        }
+                    })
+                    UpdateCartTable();
+                }
+            }
+        };
+
+        var edit_button = body.getElementsByClassName('edit-button')
+        var input = document.getElementById('edit-id')
+
+        for (var g = 0, len = edit_button.length; g < len; g++) {
+
+            edit_button[g].onclick = function () {
+
+                input.value = this.innerHTML
+            }
+        }
+    }
+}
+
+$("#update-button").click(function (event) {
+
+    var input = document.getElementById('edit-id')
+
+    $.ajax({
+        type: "PUT",
+        url: "https://localhost:7034/api/Cart/PutItemQty?" + "id=" +
+            input.value +
+            "&qty=" +
+            $("#qty-input-id").val(),
+
+        dataType: "JSON",
+        beforeSend: function () {
+            $('#spinner-loader-id').removeClass('hidden')
+        },
+        success: function (data) {
+
+            console.log(data)
+        },
+        complete: function () {
+            $('#spinner-loader-id').addClass('hidden')
+        },
+    })
+    UpdateCartTable();
+})

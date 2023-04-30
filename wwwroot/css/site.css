@@ -95,7 +95,7 @@ body {
     background-color: #ffffff;
     overflow: auto;
     height: 85vh;
-    max-height: 76vh;
+    max-height: 73vh;
     border: solid;
     border-width: 0px 2px 2px 2px;
     border-radius: 0px 0px 10px 10px;
@@ -188,10 +188,50 @@ nav {
     border-width: 2px;
 }
 
-    .add-button:hover {
-        border-color: #6170f791;
-        background-color: #6170f77a;
-    }
+.add-button:hover {
+    border-color: #6170f791;
+    background-color: #6170f77a;
+}
+
+.edit-button {
+    background-image: url("/images/edit.png");
+    background-size: 50px;
+    background-color: #f7e861;
+    width: 54px;
+    font-size: 1px;
+    /*margin-right: 10px;*/
+    height: 54px;
+    border: solid;
+    border-color: #c3c7d5ca;
+    border-radius: 2px;
+    color: transparent;
+    border-width: 2px;
+}
+
+.edit-button:hover {
+    border-color: #6170f791;
+    background-color: #6170f77a;
+}
+
+.delete-button {
+    background-image: url("/images/bin.png");
+    background-size: 50px;
+    background-color: #f7e861;
+    width: 54px;
+    font-size: 1px;
+    /*margin-right: 10px;*/
+    height: 54px;
+    border: solid;
+    border-color: #c3c7d5ca;
+    border-radius: 2px;
+    color: transparent;
+    border-width: 2px;
+}
+
+.delete-button:hover {
+    border-color: #6170f791;
+    background-color: #6170f77a;
+}
 
 video {
     width: 100vw;
@@ -292,7 +332,7 @@ video {
     color: #6170F7;
     background-color: #f7e861;
     font-weight: 500;
-    width: 100px;
+    width: 120px;
     height: 54px;
     border: solid;
     border-color: #c3c7d5ca;
@@ -300,9 +340,14 @@ video {
     border-width: 2px;
 }
 
+.input-group:hover {
+    border-color: #6170F7;
+}
+
 .search-btn:hover {
     border-color: #6170f791;
     background-color: #6170f77a;
+    color: whitesmoke;
 }
 
 @-webkit-keyframes fadein {

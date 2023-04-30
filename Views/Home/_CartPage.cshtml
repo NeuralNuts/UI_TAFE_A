@@ -2,26 +2,71 @@
     //ViewData["Title"] = "_CartPage";
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/css/cart.css" />
-</head>
-<div class="parent-cart-div" id="parent-cart-id">
+<div class="container" id="parent-cart-id">
+    <div class="container">
+        <label>Total Price:</label>
+        <div class="input-group mb-2 mt-3">
+            <input type="text" class="form-control" id="total-price-id"
+                   aria-label="Recipient's username" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <button class="search-btn" onclick="UpdateCartTable()">Check out</button>
+            </div>
+        </div>
 
-    <div class="child-cart-div" id="cart-id">
-        <div id="spinner-loader-id" class="lds-dual-ring hidden overlay"></div>
-    </div>
+        <label>Edit div:</label>
+        <div class="input-group mb-2 mt-3">
+            <input type="text" class="form-control" id="edit-id"
+                   aria-label="Recipient's username" aria-describedby="basic-addon1">
+        </div>
 
-    <br />
-    <div>
-        <button class="check-out-button" onclick="UpdateCartTable()">Check out</button>
-        <h3>Total Price:</h3>
-        <input id="total-price-id" placeholder="Total price" class="total-price-input" value="" />
+        <label>Qty:</label>
+        <div class="input-group mb-2 mt-3">
+            <input type="text" class="form-control" maxlength="1" id="qty-input-id"
+                   aria-label="Recipient's username" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <button class="search-btn" id="update-button">Update</button>
+            </div>
+        </div>
     </div>
 </div>
 
-<script>
-    
-</script>
+<table class="headings">
+    <th scope="col">Name</th>
+    <th scope="col">Qty</th>
+    <th scope="col">Price</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+</table>
+
+<div class="parent-product-div">
+    <div class="child-product-div">
+        <table>
+            <tbody id="cart-id">
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
