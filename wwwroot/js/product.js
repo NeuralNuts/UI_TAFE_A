@@ -49,7 +49,7 @@ function buildProductDivs(data) {
                                    <td>${data[i].itemName}</td>
                                    <td>${data[i].itemDescription}</td>
                                    <td>${data[i].itemUnitSize}</td>
-                                   <td>${data[i].itemPrice}$</td>
+                                   <td class="price-td">${data[i].itemPrice}$</td>
                                    <td><button class="add-button" id="add-to-list" >${data[i].id}</button></td>
                                </tr>`
         body.innerHTML += div

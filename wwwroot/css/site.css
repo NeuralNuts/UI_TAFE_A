@@ -43,11 +43,14 @@ body {
 
 .body-2 {
     background-image: none;
-    background-color: #e0e0e044;
+    background-color: #e0e0e027;
 }
 
 .parent-product-div {
     background-color: #ffffff;
+    overflow: auto;
+    height: 85vh;
+    max-height: 85vh;
     border: solid;
     border-radius: 10px;
     border-color: #eeeeee;
@@ -59,11 +62,11 @@ body {
 
 table {
     /*background-color: aliceblue;*/
+    width: 100%;
 }
 
 thead {
     color: #1b1b1be1;
-    width: 100%;
 }
 
 tbody {
@@ -81,6 +84,8 @@ tr {
 
 td {
     margin-top: 10px;
+    padding-left: 0vh;
+    width: 30%;
     background-color: transparent;
     color: #6170F7;
 }
@@ -124,6 +129,7 @@ nav {
     height: 50px;
     border: solid;
     border-color: #c3c7d5ca;
+    border-radius: 2px;
     color: transparent;
     border-width: 2px;
 }
