@@ -5,61 +5,45 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/UI_TAFE_A.styles.css" asp-append-version="true" />
 </head>
 
 <body>
-    <div class="login-div">
-        <img src="~/images/Sams Warehouse Shopping Cart.svg"/>
-        <h2 class="email-h2">Email</h2>
-        <input id="email-input"/>
+    <img src="~/images/Sams Warehouse Shopping Cart.svg" />
+    <div class="card p-5 shadow w-25 h-50" style="margin-left: 45vh;">
+        <div class="card-body text-center">
+            <div class="text-center">
+                <h2 style="color: #414141;">Email</h2>
+            </div>
 
-        <h2>Password</h2>
-        <input type="password" id="password-input"/>
-        <br />
+            <div class="input-group mb-2 mt-3">
+                <input type="text" class="form-control" id="email-input"
+                       aria-label="Recipient's username" aria-describedby="basic-addon1">
+            </div>
 
-        <button id="login-button-id">Login</button>
-        <br />
-        <h4 id="error-message-incorect-details">Details invalid</h4>
-        <a>Sign Up?</a>
+            <div class="text-center">
+                <h2 style="color: #414141;" >Password</h2>
+            </div> 
+
+            <div class="input-group mb-2 mt-3">
+                <input class="form-control" type="password" id="password-input"
+                       aria-label="Recipient's username" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="container text-center mt-5">
+                <button class="search-btn mb-5" id="login-button-id">Login</button>
+                <br />
+                @*<h4 id="error-message-incorect-details">Details invalid</h4>*@
+                <a href="#" style="font-size: 15px; font-family: Arial;">Sign Up?</a>
+            </div>
+        </div>
     </div>
 
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/login.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
-<script>
-
-    $("#login-button-id").click(function (event){
-
-        var email_input = $("#email-input").val()
-        var password_input = $("#password-input").val()
-        var response_good = "Authorized"
-        var response_bad = '"Unauthorized"'
-        var url = "https://localhost:7034/Home/HomePage"
-        var error_message_incorect_details = $("#error-message-incorect-details")
-        sessionStorage.setItem("email_input", email_input)
-        $.ajax({
-            type: "GET",
-            url: "https://localhost:7034/api/User/AuthenticateUserLogin" + "?" + 
-                                                             "email=" +
-                                                             email_input +
-                                                             "&password=" +
-                                                             password_input,
-            dataType: "JSON",
-            data: Request,
-            success: function (data){
-                if (data == response_good){
-                    error_message_incorect_details.hide()
-                    window.location.href = url
-                }
-            },
-            error: function (data){
-                error_message_incorect_details.show()
-            }
-        })
-    });
-
-</script>
 @RenderBody()
