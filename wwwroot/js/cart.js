@@ -1,5 +1,11 @@
-async function UpdateCartTable() {
+var cart_array = []
+var item_array = []
+var list_array = []
 
+var listSelectCart = document.getElementById("lists-2-select")
+
+async function UpdateCartTable() {
+    var list_array_2 = []
     var result = await fetch("https://localhost:7034/CartTable")
     var htmlResult = await result.text()
     var listSelectCart = document.getElementById("lists-2-select")
@@ -21,9 +27,9 @@ async function UpdateCartTable() {
 
         },
         success: function (response) {
-            list_array = response
+            list_array_2 = response
             buildUserSelect2(list_array)
-            console.log(product_array)
+            console.log()
 
             $.ajax({
                 type: "GET",
@@ -61,12 +67,6 @@ async function UpdateCartTable() {
         }
     })
 }
-
-var cart_array = []
-var item_array = []
-var list_array = []
-
-var listSelectCart = document.getElementById("lists-2-select")
 
 $.ajax({
     type: "GET",

@@ -55,6 +55,7 @@ $("#save-list-btn").click(function (event) {
 
         }
     })
+    location.reload()
 })
 
 function buildUserSelect(data) {
