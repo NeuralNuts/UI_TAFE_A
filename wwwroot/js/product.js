@@ -123,6 +123,8 @@ function buildProductDivs(data) {
                                     url: "https://localhost:7034/api/Cart/PostSingleCartItem?" +
                                         "UserEmail=" +
                                         sessionStorage.getItem("email_input") +
+                                        "&ListName=" +
+                                        productSelect.options[productSelect.selectedIndex].text +
                                         "&ItemName=" +
                                         data[i].itemName +
                                         "&ItemUnitSize=" +
