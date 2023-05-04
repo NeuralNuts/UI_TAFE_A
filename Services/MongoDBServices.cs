@@ -78,6 +78,34 @@ namespace UX_UI_WEB_APP.Services
         }
         #endregion
 
+        public async Task DeleteListAsync(string list_name)
+        {
+            FilterDefinition<CartModel> filter =
+            Builders<CartModel>
+            .Filter
+            .Eq(u => u.ListName, list_name);
+
+
+            await _cart_collection
+            .DeleteManyAsync(filter);
+
+            return;
+        }
+
+        public async Task DeleteListRealAsync(string list_name)
+        {
+            FilterDefinition<ListModel> filter =
+            Builders<ListModel>
+            .Filter
+            .Eq(u => u.ListName, list_name);
+
+
+            await _lists_collection
+            .DeleteManyAsync(filter);
+
+            return;
+        }
+
         public async Task<Object?> AddLists(ListModel list_model)
         {
             await _lists_collection.InsertOneAsync(list_model);

@@ -116,6 +116,33 @@ $.ajax({
     }
 })
 
+$("#delete-list").click(function (event) {
+
+    $.ajax({
+        type: "DELETE",
+        url: "https://localhost:7034/api/Lists/DeleteListReal?" + "list_name=" + listSelectCart.options[listSelectCart.selectedIndex].text,
+
+        dataType: "JSON",
+        success: function (data) {
+            console.log(data)
+            UpdateCartTable();
+        }
+    })
+
+    $.ajax({
+        type: "DELETE",
+        url: "https://localhost:7034/api/Cart/DeleteList?" + "list_name=" + listSelectCart.options[listSelectCart.selectedIndex].text,
+
+        dataType: "JSON",
+        success: function (data) {
+            console.log(data)
+            UpdateCartTable();
+        }
+    })
+
+    location.reload()
+})
+
 function buildUserSelect2(data) {
     var table = document.getElementById('lists-2-select')
     for (var i = 0; i < data.length; i++) {
