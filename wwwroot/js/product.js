@@ -2,6 +2,7 @@ const searchInput = document.getElementById("search-input")
 var product_array = []
 var list_array = []
 var productSelect = document.getElementById("lists-select")
+var nameInput = document.getElementById("name-input")
 
 $.ajax({
     type: "GET",
@@ -35,6 +36,25 @@ $.ajax({
     complete: function () {
 
     }
+})
+
+$("#save-list-btn").click(function (event) {
+    $.ajax({
+        type: "POST",
+        url: "https://localhost:7034/api/Lists/PostList?" + "UserEmail=" + sessionStorage.getItem("email_input") + "&ListName=" + nameInput.value,
+        dataType: "JSON",
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            list_array = response
+            buildUserSelect(list_array)
+            console.log(product_array)
+        },
+        complete: function () {
+
+        }
+    })
 })
 
 function buildUserSelect(data) {
