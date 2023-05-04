@@ -16,5 +16,8 @@
 
         public string CartCollection
         { get; set; } = null!;
+
+        public string ListCollection
+        { get; set; } = null!;
     }
 }

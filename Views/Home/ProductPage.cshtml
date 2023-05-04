@@ -23,6 +23,26 @@
             <th scope="col"></th>
         </table>
 
+        <div class="modal" tabindex="-1" role="dialog" id="myModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="parent-product-div">
             <div class="child-product-div">
                 <table>
@@ -30,6 +50,16 @@
                        
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="input-group mb-2 mt-3">
+            <select id="theme-select">
+                <option value="Dark Theme">Dark Theme</option>
+                <option value="Sams theme">Sams theme</option>
+            </select>
+
+            <div class="input-group-append">
+                <button class="search-btn" id="modal-btn" style="width: 150px;" type="button" data-bs-toggle="modal" data-bs-target="#myModal">Create new list</button>
             </div>
         </div>
     </div>

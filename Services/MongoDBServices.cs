@@ -22,6 +22,9 @@ namespace UX_UI_WEB_APP.Services
 
         private readonly IMongoCollection<CartModel>
         _cart_collection;
+
+        private readonly IMongoCollection<ListModel>
+       _lists_collection;
         #endregion
 
         #region ConnectionURI, Database & Collection - Variables
@@ -47,6 +50,10 @@ namespace UX_UI_WEB_APP.Services
             _cart_collection =
             database.GetCollection<CartModel>(
             mongodbSettings.Value.CartCollection);
+
+            _lists_collection =
+            database.GetCollection<ListModel>(
+            mongodbSettings.Value.ListCollection);
         }
         #endregion
 
@@ -58,15 +65,33 @@ namespace UX_UI_WEB_APP.Services
         }
         #endregion
 
-        #region Gets users items
-        public async Task<List<CartModel>> GetUserItems(string email)
+        #region Gets all lists for user
+        public async Task<List<ListModel>> GetAllUserLists()
+        {
+            return await _lists_collection.Find(new BsonDocument()).
+            ToListAsync();
+        }
+        #endregion
+
+        #region Gets users list items
+        public async Task<List<CartModel>> GetUserItems(string email, string list_name)
         {
             var email_filter =
             Builders<CartModel>
             .Filter
             .Eq(u => u.UserEmail, email);
 
-            return await _cart_collection.Find(email_filter).
+            var list_name_filter =
+            Builders<CartModel>
+            .Filter
+            .Eq(u => u.ListName, list_name);
+
+            var filters =
+            Builders<CartModel>
+            .Filter
+            .And(list_name_filter, email_filter);
+
+            return await _cart_collection.Find(filters).
             ToListAsync();
         }
         #endregion

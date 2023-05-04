@@ -61,9 +61,9 @@ namespace UX_UI_WEB_APP.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetUserCartItems")]
-        public async Task<IActionResult> GetUserCartItems(string email)
+        public async Task<IActionResult> GetUserCartItems(string email, string list_name)
         {
-            var result = await _mongodb_services.GetUserItems(email);
+            var result = await _mongodb_services.GetUserItems(email, list_name);
 
             return Ok(result);
         }
