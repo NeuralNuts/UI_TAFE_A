@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UX_UI_WEB_APP.Services;
 using UI_TAFE_A.Models;
+using UX_UI_WEB_APP.Models;
 
 namespace UX_UI_WEB_APP.Controllers
 {
@@ -28,9 +29,20 @@ namespace UX_UI_WEB_APP.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetUserLists")]
-        public async Task<List<ListModel>> GetUserLists()
+        public async Task<List<ListModel>> GetUserLists([FromQuery]string email)
         {
-            return await _mongodb_services.GetAllUserLists();
+            return await _mongodb_services.GetAllUserLists(email);
+        }
+        #endregion
+
+        #region Post an item
+        [HttpPost]
+        [Route("PostList")]
+        public async Task<IActionResult> PostList(ListModel list_model)
+        {
+            await _mongodb_services.AddLists(list_model);
+
+            return Ok("Item created");
         }
         #endregion
     }

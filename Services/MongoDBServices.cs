@@ -66,12 +66,24 @@ namespace UX_UI_WEB_APP.Services
         #endregion
 
         #region Gets all lists for user
-        public async Task<List<ListModel>> GetAllUserLists()
+        public async Task<List<ListModel>> GetAllUserLists(string email)
         {
-            return await _lists_collection.Find(new BsonDocument()).
+            var email_filter =
+            Builders<ListModel>
+            .Filter
+            .Eq(u => u.UserEmail, email);
+
+            return await _lists_collection.Find(email_filter).
             ToListAsync();
         }
         #endregion
+
+        public async Task<Object?> AddLists(ListModel list_model)
+        {
+            await _lists_collection.InsertOneAsync(list_model);
+
+            return true;
+        }
 
         #region Gets users list items
         public async Task<List<CartModel>> GetUserItems(string email, string list_name)

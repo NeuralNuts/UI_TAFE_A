@@ -1,5 +1,7 @@
 const searchInput = document.getElementById("search-input")
 var product_array = []
+var list_array = []
+var productSelect = document.getElementById("lists-select")
 
 $.ajax({
     type: "GET",
@@ -17,6 +19,31 @@ $.ajax({
 
     }
 })
+
+$.ajax({
+    type: "GET",
+    url: "https://localhost:7034/api/Lists/GetUserLists?" + "email=" + sessionStorage.getItem("email_input"),
+    dataType: "JSON",
+    beforeSend: function () {
+
+    },
+    success: function (response) {
+        list_array = response
+        buildUserSelect(list_array)
+        console.log(product_array)
+    },
+    complete: function () {
+
+    }
+})
+
+function buildUserSelect(data) {
+    var table = document.getElementById('lists-select')
+    for (var i = 0; i < data.length; i++) {
+        var row = `<option>${data[i].listName}</option>`
+        table.innerHTML += row
+    }
+}
 
 function showCorrectToast() {
     var x = document.getElementById("snackbar");
