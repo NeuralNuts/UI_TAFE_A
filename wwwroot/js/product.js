@@ -11,6 +11,18 @@ var list_array = []
 var productSelect = document.getElementById("lists-select")
 var nameInput = document.getElementById("name-input")
 
+$(document).ready(function () {
+    $("#basic-form").validate({
+        rules: {
+            list: {
+                required: true,
+                min: 5,
+                max: 20
+            }
+        }
+    });
+});
+
 $.ajax({
     type: "GET",
     url: "https://localhost:7034/api/Item/GetAllItems",
@@ -29,7 +41,7 @@ $.ajax({
 })
 
 $.ajax({
-    type: "GET",
+    type: "GET", 
     url: "https://localhost:7034/api/Lists/GetUserLists?" + "email=" + sessionStorage.getItem("email_input"),
     dataType: "JSON",
     beforeSend: function () {

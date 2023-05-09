@@ -41,39 +41,42 @@
         </table>
     </div>
 </div>
-<div class="container" id="parent-cart-id">
-    <div class="container">
-        <label>Total Price:</label>
-        <div class="input-group mb-2 mt-3">
-            <input type="text" class="form-control" id="total-price-id"
-                   aria-label="Recipient's username" aria-describedby="basic-addon1">
-            <div class="input-group-append">
-                <button class="search-btn" onclick="UpdateCartTable()">Check out</button>
+
+<form id="basic-form" action="" method="put">
+    <div class="container" id="parent-cart-id">
+        <div class="container">
+            <label>Total Price:</label>
+            <div class="input-group mb-2 mt-3">
+                <input type="text" class="form-control" id="total-price-id"
+                       aria-label="Recipient's username" aria-describedby="basic-addon1">
+                <div class="input-group-append">
+                    <button class="search-btn" onclick="UpdateCartTable()">Check out</button>
+                </div>
             </div>
-        </div>
 
-        <label>Edit div:</label>
-        <div class="input-group mb-2 mt-3">
-            <input type="text" class="form-control" id="edit-id"
-                   aria-label="Recipient's username" aria-describedby="basic-addon1">
-        </div>
-
-        <label>Qty:</label>
-        <div class="input-group mb-2 mt-3">
-            <input type="text" class="form-control" maxlength="1" id="qty-input-id"
-                   aria-label="Recipient's username" aria-describedby="basic-addon1">
-            <div class="input-group-append">
-                <button class="search-btn" id="update-button">Update</button>
+            <label>Edit div:</label>
+            <div class="input-group mb-2 mt-3">
+                <input type="text" class="form-control" id="edit-id"
+                       aria-label="Recipient's username" aria-describedby="basic-addon1" name="edit">
             </div>
-        </div>
-        <div class="input-group mb-2 mt-3">
-            <select id="lists-2-select">
-            </select>
 
-            <div class="input-group-append">
-                <button class="search-btn" onclick="UpdateCartTable()" style="width: 150px;">Show list</button>
-                <button class="search-btn" id="delete-list" style="width: 150px;">Delete list</button>
+            <label>Qty:</label>
+            <div class="input-group mb-2 mt-3">
+                <input type="text" class="form-control" maxlength="1" id="qty-input-id"
+                       aria-label="Recipient's username" aria-describedby="basic-addon1" name="qty">
+                <div class="input-group-append">
+                    <button class="search-btn" id="update-button">Update</button>
+                </div>
+            </div>
+            <div class="input-group mb-2 mt-3">
+                <select id="lists-2-select">
+                </select>
+
+                <div class="input-group-append">
+                    <button class="search-btn" onclick="UpdateCartTable()" style="width: 150px;">Show list</button>
+                    <button class="search-btn" id="delete-list" style="width: 150px;">Delete list</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>

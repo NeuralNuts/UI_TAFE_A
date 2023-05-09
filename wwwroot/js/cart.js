@@ -11,6 +11,22 @@ var list_array = []
 
 var listSelectCart = document.getElementById("lists-2-select")
 
+$(document).ready(function () {
+    $("#basic-form").validate({
+        rules: {
+            edit: {
+                required: true
+            },
+            qty: {
+                required: true,
+                number: true,
+                min: 1,
+                max: 10
+            }
+        }
+    });
+});
+
 async function UpdateCartTable() {
     var list_array_2 = []
     var result = await fetch("https://localhost:7034/CartTable")

@@ -67,6 +67,13 @@
                                 Account
                             </button>
                         </li>
+
+                        <li class="nav-item">
+                            <button class="btn" onclick="window.location.href =
+                                                '@Url.Action("SolarSam", "Home")'">
+                                Solar Sam
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -90,6 +97,7 @@
     <script src="~/js/product.js" asp-append-version="true"></script>
     <script src="~/js/cart.js" asp-append-version="true"></script>
     <script src="~/js/account.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

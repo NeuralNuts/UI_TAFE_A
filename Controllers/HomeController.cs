@@ -39,7 +39,7 @@ namespace UX_UI_WEB_APP.Controllers
             return View();
         }
 
-        public IActionResult PyramidChain()
+        public IActionResult SolarSam()
         {
             return View();
         }
