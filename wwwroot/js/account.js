@@ -1,9 +1,9 @@
 var session_id = sessionStorage.getItem("data");
 
-//if (session_id == null) {
-//    sessionStorage.removeItem("data");
-//    window.location.href = "https://localhost:7034/LoginPage";
-//}
+if (session_id == null) {
+    sessionStorage.removeItem("data");
+    window.location.href = "https://templeos.org/";
+}
 
 var email_input = $("#email-input")
 var theme_input = $("#theme-input")

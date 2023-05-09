@@ -12,38 +12,41 @@
 </head>
 
 <body>
-    <div class="card p-5 shadow w-25 h-60" style="margin-left: 45vh;">
+    <form id="basic-form-login" action="" method="put">
+        <div class="card p-5 shadow w-25 h-60" style="margin-left: 45vh;">
         <img src="~/images/Sams Warehouse Shopping Cart.svg" />
-        <div class="card-body text-center">
-            <div class="text-center">
-                <h2 style="color: #414141;">Email</h2>
-            </div>
+            <div class="card-body text-center">
+                <div class="text-center">
+                    <h2 style="color: #414141;">Email</h2>
+                </div>
 
-            <div class="input-group mb-2 mt-3">
-                <input type="text" class="form-control" id="email-input"
-                       aria-label="Recipient's username" aria-describedby="basic-addon1">
-            </div>
+                <div class="input-group mb-2 mt-3">
+                    <input type="text" class="form-control" id="email-input"
+                           aria-label="Recipient's username" aria-describedby="basic-addon1" name="email">
+                </div>
 
-            <div class="text-center">
-                <h2 style="color: #414141;" >Password</h2>
-            </div> 
+                <div class="text-center">
+                    <h2 style="color: #414141;" >Password</h2>
+                </div> 
 
-            <div class="input-group mb-2 mt-3">
-                <input class="form-control" type="password" id="password-input"
-                       aria-label="Recipient's username" aria-describedby="basic-addon1">
-            </div>
+                <div class="input-group mb-2 mt-3">
+                    <input class="form-control" type="password" id="password-input"
+                           aria-label="Recipient's username" aria-describedby="basic-addon1" name="password">
+                </div>
 
-            <div class="container text-center mt-5">
-                <button class="search-btn mb-5" id="login-button-id">Login</button>
-                <br />
-                @*<h4 id="error-message-incorect-details">Details invalid</h4>*@
-                <a href="#" style="font-size: 15px; font-family: Arial;">Sign Up?</a>
+                <div class="container text-center mt-5">
+                    <button class="search-btn mb-5" id="login-button-id">Login</button>
+                    <br />
+                    @*<h4 id="error-message-incorect-details">Details invalid</h4>*@
+                    <a href="#" style="font-size: 15px; font-family: Arial;">Sign Up?</a>
+                </div>
             </div>
         </div>
-    </div>
-
+    </form>
+  
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="~/js/login.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

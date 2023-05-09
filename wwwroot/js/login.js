@@ -1,3 +1,18 @@
+$(document).ready(function () {
+    $("#basic-form-login").validate({
+        rules: {
+            email: {
+                required: true
+            },
+            password: {
+                required: true,
+                min: 5,
+                max: 10
+            }
+        }
+    });
+});
+
 $("#login-button-id").click(function (event) {
 
     var email_input = $("#email-input").val()
