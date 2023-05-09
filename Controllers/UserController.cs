@@ -5,6 +5,8 @@ using MongoDB.Bson;
 using System.Security.Claims;
 using UX_UI_WEB_APP.Models;
 using UX_UI_WEB_APP.Services;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace UX_UI_WEB_APP.Controllers
 {
@@ -44,6 +46,27 @@ namespace UX_UI_WEB_APP.Controllers
         }
         #endregion
 
+        const int keySize = 64;
+        const int iterations = 350000;
+        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+        string HashPasword(string password, out byte[] salt)
+        {
+            salt = RandomNumberGenerator.GetBytes(keySize);
+            var hash = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(password),
+                salt,
+                iterations,
+                hashAlgorithm,
+                keySize);
+            return Convert.ToHexString(hash);
+        }
+
+        bool VerifyPassword(string password, string hash, byte[] salt)
+        {
+            var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlgorithm, keySize);
+            return hashToCompare.SequenceEqual(Convert.FromHexString(hash));
+        }
+
         #region Authenticate user login
         [HttpGet]
         [Route("AuthenticateUserLogin")]
@@ -53,8 +76,14 @@ namespace UX_UI_WEB_APP.Controllers
         {
             try
             {
+                var hash = HashPasword(password, out var salt);
                 var result = await _mongodb_services
                 .AuthenticateUserLoginAsync(email, password);
+
+                if (VerifyPassword(password, hash, salt) == false)
+                {
+                    return Unauthorized("Unauthorized".ToJson());
+                }
 
                 if (result == null ||
                     email == null ||
