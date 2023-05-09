@@ -3,6 +3,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    var session_id = sessionStorage.getItem("data");
+
+    if (session_id == null) {
+        sessionStorage.removeItem("data");
+        window.location.href = '@Url.Action("LoginPage", "Home")';
+    }
+</script>
+
 <body class="body-2">
     <div class="container">
         <label>Email:</label>
@@ -21,6 +30,9 @@
             <div class="input-group-append">
                 <button class="search-btn" id="save-button">Save theme</button>
             </div>
+            <button class="search-btn" onclick="location.href='@Url.Action("Logout", "Home" )'">
+                Logout
+            </button>
         </div>
     </div>
 </body>

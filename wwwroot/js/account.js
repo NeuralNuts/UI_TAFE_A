@@ -1,3 +1,10 @@
+var session_id = sessionStorage.getItem("data");
+
+//if (session_id == null) {
+//    sessionStorage.removeItem("data");
+//    window.location.href = "https://localhost:7034/LoginPage";
+//}
+
 var email_input = $("#email-input")
 var theme_input = $("#theme-input")
 var session_email = sessionStorage.getItem("email_input")
@@ -7,6 +14,12 @@ var reader = new FileReader()
 
 theme_input.val(session_theme)
 email_input.val(session_email)
+
+$("#logout-btn").click(function (event) {
+    window.location = "https://localhost:7034/"
+    localStorage.clear();
+    sessionStorage.clear();
+})
 
 $("#save-button").click(function (event) {
 

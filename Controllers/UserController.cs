@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using System.Security.Claims;
 using UX_UI_WEB_APP.Models;
 using UX_UI_WEB_APP.Services;
-using System.Security.Cryptography;
 
 namespace UX_UI_WEB_APP.Controllers
 {
@@ -23,59 +25,6 @@ namespace UX_UI_WEB_APP.Controllers
             _mongodb_services = mongodbServices;
         }
         #endregion
-
-        static byte[] EncryptStringToBytes(string str, byte[] keys)
-        {
-            byte[] encrypted;
-            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
-            {
-                aes.Key = keys;
-
-                aes.GenerateIV(); 
-
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
-
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    msEncrypt.Write(aes.IV, 0, aes.IV.Length);
-                    ICryptoTransform encoder = aes.CreateEncryptor();
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encoder, CryptoStreamMode.Write))
-                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                    {
-                        swEncrypt.Write(str);
-                    }
-                    encrypted = msEncrypt.ToArray();
-                }
-            }
-
-            return encrypted;
-        }
-
-        public static string DecryptStringFromBytes(byte[] cipherText, byte[] key)
-        {
-            string decrypted;
-            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
-            {
-                aes.Key = key;
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
-
-                using (MemoryStream msDecryptor = new MemoryStream(cipherText))
-                {
-                    byte[] readIV = new byte[16];
-                    msDecryptor.Read(readIV, 0, 16);
-                    aes.IV = readIV;
-                    ICryptoTransform decoder = aes.CreateDecryptor();
-                    using (CryptoStream csDecryptor = new CryptoStream(msDecryptor, decoder, CryptoStreamMode.Read))
-                    using (StreamReader srReader = new StreamReader(csDecryptor))
-                    {
-                        decrypted = srReader.ReadToEnd();
-                    }
-                }
-            }
-            return decrypted;
-        }
 
         #region Http get all users
         [HttpGet]
@@ -105,7 +54,7 @@ namespace UX_UI_WEB_APP.Controllers
             try
             {
                 var result = await _mongodb_services
-                .AuthenticateUserLoginAsync(email,password);
+                .AuthenticateUserLoginAsync(email, password);
 
                 if (result == null ||
                     email == null ||
@@ -115,7 +64,21 @@ namespace UX_UI_WEB_APP.Controllers
                 }
                 else
                 {
+                    //var claims = new List<Claim>
+                    //{
+                    //  new Claim(ClaimTypes.Name, Guid.NewGuid().ToString())
+                    //};
 
+                    //var claimsIdentity = new ClaimsIdentity(
+                    //  claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    //var authProperties = new AuthenticationProperties();
+
+                    //await HttpContext.SignInAsync(
+                    //  CookieAuthenticationDefaults.AuthenticationScheme,
+                    //  new ClaimsPrincipal(claimsIdentity),
+                    //  authProperties);
+                    string id = HttpContext.Session.Id;
+                    HttpContext.Session.GetString(id);
                     return Ok("Authorized".ToJson());
                 }
             }

@@ -1,12 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using UX_UI_WEB_APP.Models;
+using UX_UI_WEB_APP.Services;
 
 namespace UX_UI_WEB_APP.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        //private readonly UserController user_controller;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -21,6 +27,11 @@ namespace UX_UI_WEB_APP.Controllers
         public IActionResult LoginPage()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()
@@ -47,6 +58,7 @@ namespace UX_UI_WEB_APP.Controllers
         {
             return View();
         }
+
 
         public IActionResult AccountPage()
         {

@@ -1,3 +1,10 @@
+var session_id = sessionStorage.getItem("data");
+
+//if (session_id == null) {
+//    sessionStorage.removeItem("data");
+//    window.location.href = '@Url.Action("LoginPage", "Home")';
+//}
+
 const searchInput = document.getElementById("search-input")
 var product_array = []
 var list_array = []
