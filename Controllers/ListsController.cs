@@ -55,9 +55,15 @@ namespace UX_UI_WEB_APP.Controllers
         [Route("PostList")]
         public async Task<IActionResult> PostList(ListModel list_model)
         {
-            await _mongodb_services.AddLists(list_model);
-
-            return Ok("Item created");
+            if (list_model.ListName == null)
+            {
+                return Problem("Bad Bad Bad!");
+            }
+            else
+            {
+                await _mongodb_services.AddLists(list_model);
+                return Ok("Item created");
+            }
         }
         #endregion
     }

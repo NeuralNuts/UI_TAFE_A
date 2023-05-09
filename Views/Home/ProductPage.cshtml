@@ -23,26 +23,26 @@
             <th scope="col"></th>
         </table>
 
-        <form id="basic-form" action="" method="post">
-            <div class="modal" tabindex="-1" role="dialog" id="myModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Creat list</h5>
-                        </div>
+        <div class="modal" tabindex="-1" role="dialog" id="myModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Creat list</h5>
+                    </div>
+                    <form id="basic-form-products" action="" method="post">
                         <div class="modal-body">
                             <label>List name:</label>
                             <input type="text" class="form-control" id="name-input" placeholder="Enter a name..."
-                                   aria-label="Recipient's username" aria-describedby="basic-addon1" name="list"/>
+                                   aria-label="Recipient's username" aria-describedby="basic-addon1" name="list_name" />
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" id="save-list-btn" class="search-btn">Save</button>
-                            <button type="button" class="search-btn" data-bs-dismiss="modal">Close</button>
-                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" id="save-list-btn" class="search-btn">Save</button>
+                        <button type="button" class="search-btn" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
 
         <div class="parent-product-div">
             <div class="child-product-div">
