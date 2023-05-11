@@ -235,7 +235,7 @@ video {
     border-width: 2px;
 }
 
-.edit-button:hover {
+.edit-button:focus {
     border-color: #6170f791;
     background-color: #6170f77a;
 }
